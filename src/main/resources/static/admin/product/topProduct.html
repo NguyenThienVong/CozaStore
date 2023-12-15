@@ -1,0 +1,36 @@
+	<div class="col-md-12 mt-5">
+	<div class="col-md-12 mt-3 mb-5 offset-1">
+		<canvas id="myChart" width="400" height="200"></canvas>
+	</div>
+		<table class="table table-striped">
+			<thead class="bg-info"
+				style="text-transform: uppercase; text-align: center;">
+				<tr>
+					<th>No.</th>
+					<th>Image</th>
+					<th>Name</th>
+					<th>Date</th>
+					<th>Price</th>
+					<th>Import</th>					
+					<th>Sold</th>
+					<th>Remain</th>
+					<th>Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in tops" style="text-align: center;">
+					<td>{{$index+1}}</td>
+					<th><img alt="{{item.image}}"
+						style="width: 70px; height: 70px; border-radius: 0px;"
+						src="/images/{{item.products.image}}"></th>
+					<td>{{item.products.name}}</td>					
+					<td>{{item.products.create_date |date:'dd-MM-yyyy'}}</td>					
+					<td class="text-info">{{item.products.price|number:0}} VNĐ</td>
+					<th>{{item.products.quantity}}</th>
+					<th>{{item.sum}}</th>
+					<th>{{item.products.quantity-item.sum}}</th>
+					<td class="text-info">{{item.sold|number:0}} VNĐ</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>

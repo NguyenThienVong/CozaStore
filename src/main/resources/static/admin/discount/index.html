@@ -1,0 +1,151 @@
+<div class="row mt-5">
+	<div class="row col-md-12">
+		<div class="row col-12 mb-3">
+			<div class="form-group col-sm-7"></div>
+			<div class="form-group col-sm-2">
+				<label>Start Time</label> <input ng-model="form1.startTime"
+					type="datetime-local" class="form-control">
+			</div>
+			<div class="form-group col-sm-2">
+				<label>End Time</label> <input ng-model="form1.endTime"
+					type="datetime-local" class="form-control">
+			</div>
+			<div class="pt-4 col-sm-1">
+				<button ng-click="onsale.add()" class="btn btn-warning">SUBMIT</button>
+			</div>
+		</div>
+
+		<div class="col-sm-2"></div>
+		<div class="col-sm-10">
+			<div class="row panel">
+				<div class="form-group col-8">
+					<div class="row">
+						<div class="col-4">
+							<label for="image"><img
+								ng-src="{{'/images/'+form.image}}"
+								style="max-width: 100%; max-height: 180px; border-radius: 10px;"
+								alt=" IMAGE">
+							</label>
+						</div>
+						<div class="row col-4 mt-3">
+							<div class="col-12">
+								<label>Name</label>
+								<input ng-model="form.name" class="form-control" readonly="readonly">
+							</div>
+							<div class="col-12">
+								<label>Category</label>
+								<select ng-model="form.categories.id" class="form-control" readonly="readonly">
+									<option ng-repeat="c in cate" ng-value="c.id">{{c.name}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="row col-4 mt-3">
+							<div class="col-12">
+								<label>Price</label>
+								<input ng-model="form.price" class="form-control" readonly="readonly">
+							</div>
+							<div class="col-12">
+								 <label>Sale (%)</label>
+								<input type="number" ng-model="form.sale" class="form-control" min="0" step="5">							
+							</div>
+						</div>
+					</div>
+
+					<br>
+
+					<div class="panel-footer text-center mt-3 mb-5">
+						<button ng-click="update()" class="btn btn-danger">
+							<i class="glyphicon glyphicon-plus"></i> Create Sale
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row col-12">
+		<div class="col-7">
+			<div class="text-left mb-3">
+				<h1>ON SALE</h1>
+			</div>
+			<table class="table border table-hover">
+				<thead class="bg-info"
+					style="color: dark; text-transform: uppercase; text-align: center;">
+					<tr>
+						<th>Id</th>
+						<th>Image</th>
+						<th>Name</th>
+						<th>Old Price</th>
+						<th>New Price</th>
+						<th>Edit</th>
+					</tr>
+				</thead>
+				<tbody style="background-color: white;">
+					<tr ng-repeat="item in onSale" style="text-align: center;">
+						<th>{{item.id}}</th>
+						<th><img alt="{{item.image}}"
+							style="width: 50px; height: 50px; border-radius: 0px;"
+							src="/images/{{item.image}}"></th>
+						<td>{{item.name}}</td>
+						<td class="text-danger" style="text-decoration: line-through;">{{item.price | number:0}}</td>
+						<td class="text-info">{{ (item.price * (100 - item.sale) / 100) | number:0 }}</td>
+						<td>
+							<div class="btn-group btn-group-xs">
+								<button ng-click="remove(item)" class="btn btn-info mr-3">
+									<span class="glyphicon glyphicon-edit">Remove</span>
+								</button>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="col-5">
+			<div class="text-left mb-3">
+				<h1>NO SALE</h1>
+			</div>
+			<table class="table border table-hover">
+				<thead class="bg-info"
+					style="color: dark; text-transform: uppercase; text-align: center;">
+					<tr>
+						<th>Id</th>
+						<th>Image</th>
+						<th>Name</th>
+						<th>Price</th>
+						<th>Edit</th>
+					</tr>
+				</thead>
+				<tbody style="background-color: white;">
+					<tr ng-repeat="item in pageNoSale.noSale" style="text-align: center;">
+						<th>{{item.id}}</th>
+						<th><img alt="{{item.image}}"
+							style="width: 50px; height: 50px; border-radius: 0px;"
+							src="/images/{{item.image}}"></th>
+						<td>{{item.name}}</td>
+						<td class="text-info">{{item.price|number:0}}</td>
+						<td>
+							<div class="btn-group btn-group-xs">
+								<button ng-click="edit(item)" class="btn btn-info mr-3">
+									<span class="glyphicon glyphicon-edit">Sale</span>
+								</button>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="panel-footer text-center mt-3">
+				<button ng-click="pageNoSale.first()" class="btn btn-success">
+					First</button>
+				<button ng-click="pageNoSale.prev()" class="btn btn-success">
+					Back</button>
+				<button class="btn btn-success">
+					<b>{{pageNoSale.page + 1}} of {{pageNoSale.count}}</b>
+				</button>
+				<button ng-click="pageNoSale.next()" class="btn btn-success">
+					Next</button>
+				<button ng-click="pageNoSale.last()" class="btn btn-success">
+					Last</button>
+			</div>
+		</div>
+	</div>
+</div>

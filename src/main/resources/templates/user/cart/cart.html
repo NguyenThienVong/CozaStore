@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout :: areas(~{::title},~{::body})}">
+<head>
+
+<title>Coza Store | Cart</title>
+
+</head>
+<body>
+
+	<!-- Title page -->
+	<section class="bg-img1 txt-center p-lr-15 p-tb-40"></section>
+	<!-- Title page -->
+	<!-- Breadcrumb -->
+	<div class="container">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			<a th:href="@{/home/index}" class="stext-109 cl8 hov-cl1 trans-04">
+				Home <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a> <a th:href="@{/home/product/list}"
+				class="stext-109 cl8 hov-cl1 trans-04"> Product <i
+				class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a> <span class="stext-109 cl4"> Cart </span>
+		</div>
+	</div>
+
+	<div class="container">
+		<!-- Shoping Cart -->
+		<form class="bg0 p-t-75 p-b-85">
+			<div>
+				<div class="row">
+					<div class="col-lg-10 col-xl-9 m-lr-auto m-b-50">
+						<div class="m-l-25 m-r--38 m-lr-0-xl">
+							<div class="wrap-table-shopping-cart">
+								<table class="table-shopping-cart">
+									<thead>
+										<tr class="table_head">
+											<th class="column-1">Image</th>
+											<th class="column-1">Name</th>
+											<th class="column-1">Price</th>
+											<th class="column-1">Color</th>
+											<th class="column-1">Ram</th>
+											<th class="column-1">Quantity</th>
+											<th class="column-1">Total</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="table_row" ng-repeat="item in cart.items">
+											<td class="column-1">
+												<div class="how-itemcart1" ng-click="cart.remove(item.id)">
+													<img src="/images/{{item.image}}" alt="PHOTO">
+												</div>
+											</td>
+											<td class="column-1">{{item.name}}</td>
+											<td class="column-1">{{item.price|number:0}}</td>
+											<td class="column-1"><select
+												ng-show="item.categories.id !== 5 && item.categories.id !== 6"
+												ng-model="item.color" ng-change="cart.saveToLocalStorage()"
+												class="form-control" style="width: 100px;">
+													<option style="font-weight: bold;" value="Black">Black</option>
+													<option style="font-weight: bold;" value="Gold">Gold</option>
+													<option style="font-weight: bold;" value="Silver">Silver</option>
+													<option style="font-weight: bold;" value="Purple">Purple</option>
+													<option style="font-weight: bold;" value="Titan">Titan</option>
+											</select></td>
+											<td class="column-1"><select
+												ng-show="item.categories.id !== 5 && item.categories.id !== 6"
+												ng-model="item.ram" ng-change="cart.saveToLocalStorage()"
+												class="form-control" style="width: 100px;">
+													<option style="font-weight: bold;" value="128G">128G</option>
+													<option style="font-weight: bold;" value="256G">256G</option>
+													<option style="font-weight: bold;" value="512G">512G</option>
+													<option style="font-weight: bold;" value="1TB">1TB</option>
+											</select></td>
+											<td class="column-1"><input class="form-control"
+												name="number" id="number" type="number" ng-model="item.qty"
+												ng-change="cart.saveToLocalStorage()" min="1"
+												style="width: 70px; text-align: center;"></td>
+											<td class="column-1">{{item.qty*item.price|number:0}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<div
+								class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
+								<div class="flex-w flex-m m-r-20 m-tb-5">
+									<div class="flex-w flex-t p-t-27 p-b-33">
+										<div class="size-209 p-t-1">
+											<span class="mtext-110 cl2" style="font-weight: bold;">
+												{{cart.amount|number:0}}&nbsp;VNĐ </span>
+										</div>
+									</div>
+
+
+								</div>
+								<div class="flex-w flex-m m-r-20 m-tb-5">
+									<a th:href="@{/order/checkout}"
+										class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+										Go To Checkout </a>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

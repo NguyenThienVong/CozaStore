@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout :: areas(~{::title},~{::body})}">
+<head>
+
+<title>[[#{title.product-details}]]</title>
+
+</head>
+
+<body>
+
+	<!-- Title page -->
+	<section class="bg-img1 txt-center p-lr-15 p-tb-40"></section>
+
+	<!-- Breadcrumb -->
+	<div class="container">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			<a th:href="@{/home/index}" class="stext-109 cl8 hov-cl1 trans-04">
+				Home <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a> <a th:href="@{/home/product/list}"
+				class="stext-109 cl8 hov-cl1 trans-04"> Product <i
+				class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a> <span class="stext-109 cl4"> [[${item.name}]] </span>
+		</div>
+	</div>
+
+
+	<!-- Product Detail -->
+	<section class="sec-product-detail bg0 p-t-65 p-b-60">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-lg-7 p-b-30">
+					<div class="p-l-25 p-r-30 p-lr-0-lg">
+						<div class="wrap-slick3 flex-sb flex-w">
+							<div class="wrap-slick3-dots"></div>
+							<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
+
+							<div class="slick3 gallery-lb">
+								<div class="item-slick3"
+									th:data-thumb="@{|/images/${item.image}|}">
+									<div class="wrap-pic-w pos-relative">
+										<img th:src="@{|/images/${item.image}|}" alt="IMG-PRODUCT">
+
+										<a
+											class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+											th:href="@{|/images/${item.image}|}"> <i
+											class="fa fa-expand"></i>
+										</a>
+									</div>
+								</div>
+								<div class="item-slick3"
+									th:data-thumb="@{|/images/${item.image1}|}">
+									<div class="wrap-pic-w pos-relative">
+										<img th:src="@{|/images/${item.image1}|}" alt="IMG-PRODUCT">
+
+										<a
+											class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+											th:href="@{|/images/${item.image1}|}"> <i
+											class="fa fa-expand"></i>
+										</a>
+									</div>
+								</div>
+								<div class="item-slick3"
+									th:data-thumb="@{|/images/${item.image2}|}">
+									<div class="wrap-pic-w pos-relative">
+										<img th:src="@{|/images/${item.image2}|}" alt="IMG-PRODUCT">
+
+										<a
+											class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+											th:href="@{|/images/${item.image2}|}"> <i
+											class="fa fa-expand"></i>
+										</a>
+									</div>
+								</div>
+								<div class="item-slick3"
+									th:data-thumb="@{|/images/${item.image3}|}">
+									<div class="wrap-pic-w pos-relative">
+										<img th:src="@{|/images/${item.image3}|}" alt="IMG-PRODUCT">
+
+										<a
+											class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+											th:href="@{|/images/${item.image3}|}"> <i
+											class="fa fa-expand"></i>
+										</a>
+									</div>
+								</div>
+								<div class="item-slick3"
+									th:data-thumb="@{|/images/${item.image4}|}">
+									<div class="wrap-pic-w pos-relative">
+										<img th:src="@{|/images/${item.image4}|}" alt="IMG-PRODUCT">
+
+										<a
+											class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+											th:href="@{|/images/${item.image4}|}"> <i
+											class="fa fa-expand"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-5 p-b-30">
+					<div class="p-r-50 p-t-5 p-lr-0-lg">
+
+						<h4 class="mtext-105 cl2 js-name-detail p-b-14"
+							style="font-size: 33px;">[[${item.name}]]</h4>						
+						<input id="oldPrice" th:value="${item.price}*(100-${item.sale})/100"
+							style="display: none;"> <span class="mtext-106 cl2"
+							style="color: #0066CC; font-weight: bold; font-size: 25px;">
+							<span id="priceDisplay"></span> đ
+						</span>
+						<div th:if="${item.sale} > '0'" class="mb-3" style="text-decoration: line-through; color: #0C356A; font-weight: bolder;margin-top:10px; font-size: 19px; font-family: sans-serif;">
+								<span th:utext="${#numbers.formatDecimal(item.price, 0, 'POINT', 0, 'POINT')}"></span> ₫
+						</div>	
+
+
+						<div class="promo mt-4">
+							<h1>Khuyến mãi trị giá 100.000 ₫</h1>
+							<p>Giá và khuyến mãi dự kiến áp dụng đến 23:00</p>
+							<ul>
+								<li>- Tặng miếng dán kính iPhone</li>
+								<li>- Thu cũ Đổi mới: Giảm đến 2 triệu (Tuỳ model máy cũ,
+									Không kèm thanh toán qua cổng online, mua kèm)</li>
+								<li>- Vòng quay may mắn: Giảm 100.000đ - 500.000đ (Chỉ áp
+									dụng tại siêu thị; Không kèm Thu cũ Đổi mới)</li>
+								<li>- Hoàn tiền nếu ở đâu rẻ hơn (Trong vòng 7 ngày; chỉ áp
+									dụng tại siêu thị)</li>
+								<li><a href="">- Nhập mã MMSALE100 giảm ngay 1% tối đa
+										100.000đ khi thanh toán qua VNPAY</a></li>
+							</ul>
+						</div>
+						<script>
+							document
+									.addEventListener(
+											'DOMContentLoaded',
+											function() {
+												var priceDisplay = document
+														.getElementById('priceDisplay');
+												var oldPriceInput = document
+														.getElementById('oldPrice');
+												var oldPrice = oldPriceInput.value;
+												var formattedPrice = Number(
+														oldPrice)
+														.toFixed(0)
+														.replace(
+																/\B(?=(\d{3})+(?!\d))/g,
+																".");
+												priceDisplay.innerHTML = formattedPrice;
+											});
+									</script>
+						<!--  -->
+						<div class="p-t-33">
+							<div class="flex-w p-b-10"
+								th:unless="${item.categories.id == 5 or item.categories.id == 6}">
+								<div class="size-203 flex-c-m respon6" style="font-family: sans-serif;">Ram</div>
+								<div class="size-2004 respon6-next">
+									<div class="rs1-select2 bor8 bg0">
+										<select name="time" id="ram" ng-model="ram" ng-change="changeRam()">
+											<option value="128G">128G</option>
+											<option value="256G">256G</option>
+											<option value="512G">512G</option>
+											<option value="1TB">1TB</option>
+										</select>
+									</div>
+								</div>
+							</div>
+<style>
+#ram, #color {
+	width: 100%;
+	height: 45px;
+	border: none;
+	font-size: 19px;
+	appearance: none;
+	cursor: pointer;
+}
+
+#ram option, #color option {
+	text-align: center;	
+	font-size: 19px;
+}
+</style>
+							<div class="flex-w p-b-10"
+								th:unless="${item.categories.id == 5 or item.categories.id == 6}">
+								<div class="size-203 flex-c-m respon6" style="font-family: sans-serif;">Color</div>
+								<div class="size-2004 respon6-next">
+									<div class="rs1-select2 bor8 bg0">
+										<select name="time" id="color" ng-model="color">
+											<option value="Black">BLACK</option>
+											<option value="Gold">GOLD</option>
+											<option value="Silver">SILVER</option>
+											<option value="Purple">PURPLE</option>
+											<option value="Titan">TITAN</option>
+										</select>										
+									</div>
+								</div>
+							</div>
+
+							<div class="flex-w p-b-10">
+								<div class="size-203 flex-c-m respon6" style="font-family: sans-serif;">Quantity</div>
+								<div class="size-204 flex-w flex-m respon6-next">
+									<div class="wrap-num-product flex-w m-r-20 m-tb-10">
+										<div ng-click="truQuantity()"
+											class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+											<i class="fs-16 zmdi zmdi-minus"></i>
+										</div>
+										<input style="font-size: 19px;" class="mtext-104 cl3 txt-center num-product"
+											ng-model="qty" name="num-product" type="number" min="1"
+											placeholder="1">
+										<div ng-click="congQuantity()"
+											class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+											<i class="fs-16 zmdi zmdi-plus"></i>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row" style="margin-left: 105px;">
+						<a th:attr="ng-click=@{|cart.add(${item.id})|}"
+							th:href="@{/home/cart}"
+							class="flex-c-m stext-101 cl0 size-101 bg11 bor1 hov-btn1 p-lr-15 trans-04 mr-3">
+							Mua Ngay </a>
+						<button th:attr="ng-click=@{|cart.add(${item.id})|}"
+							class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+							Thêm Vào Giỏ Hàng</button>
+					</div>
+
+					<!--  -->
+					<div class="flex-w flex-m p-l-100 p-t-40 respon7">
+						<div class="flex-m bor9 p-r-10 m-r-11">
+								<a th:attr="ng-click=@{|favorite.add(${item.id})|}"
+									class="btn-addwish-b2 dis-blockpos-relative tooltip100"
+									data-tooltip="Favorite">
+									<img class="dis-block trans-04"
+									src="/user/images/icons/icon-heart-02.png" alt="ICON">
+								</a>
+						</div>
+
+						<a href="#"
+							class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
+							data-tooltip="Facebook"> <i class="fa fa-facebook"></i>
+						</a> <a href="#"
+							class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
+							data-tooltip="Twitter"> <i class="fa fa-twitter"></i>
+						</a> <a href="#"
+							class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
+							data-tooltip="Google Plus"> <i class="fa fa-google-plus"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="bor10 m-t-50 p-t-43 p-b-40">
+			<!-- Tab01 -->
+			<div class="tab01">
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="nav-item p-b-10"><a class="nav-link active"
+						data-toggle="tab" href="#reviews" role="tab">Reviews</a></li>
+
+					<li class="nav-item p-b-10"><a class="nav-link"
+						data-toggle="tab" href="#description" role="tab">Description</a></li>
+
+					<li class="nav-item p-b-10"><a class="nav-link"
+						data-toggle="tab" href="#information" role="tab">Information</a></li>
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content p-t-43">
+					<!-- - -->
+					<div class="tab-pane fade" id="description" role="tabpanel">
+						<div class="how-pos2 p-lr-15-md">
+							<p class="stext-102 cl6">[[${item.describe}]]</p>
+						</div>
+					</div>
+
+					<!-- - -->
+					<div class="tab-pane fade" id="information" role="tabpanel">
+						<div class="row">
+							<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
+								<ul class="p-lr-28 p-lr-15-sm">
+									<li class="flex-w flex-t p-b-7"><span
+										class="stext-102 cl3 size-205"> Weight </span> <span
+										class="stext-102 cl6 size-206"> 0.3 kg </span></li>
+
+									<li class="flex-w flex-t p-b-7"><span
+										class="stext-102 cl3 size-205"> Dimensions </span> <span
+										class="stext-102 cl6 size-206"> 110 x 33 x 100 cm </span></li>
+
+									<li class="flex-w flex-t p-b-7"><span
+										class="stext-102 cl3 size-205"> Materials </span> <span
+										class="stext-102 cl6 size-206"> 60% Titanium </span></li>
+
+									<li class="flex-w flex-t p-b-7"><span
+										class="stext-102 cl3 size-205"> Color </span> <span
+										class="stext-102 cl6 size-206"> Black, Titan, Gold,
+											White </span></li>
+
+									<li class="flex-w flex-t p-b-7"><span
+										class="stext-102 cl3 size-205"> Ram </span> <span
+										class="stext-102 cl6 size-206"> 128G, 256G, 512G, 1TB </span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!-- - -->
+					<div class="tab-pane fade show active" id="reviews" role="tabpanel">
+						<div class="row">
+							<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
+								<div class="p-b-30 m-lr-15-sm">
+									<!-- Review -->
+									<div class="flex-w flex-t p-b-68" th:each="rv : ${reviews}">
+										<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
+											<img th:src="@{|/images/${rv.accounts.photo}|}" alt="AVATAR">
+										</div>
+
+										<div class="size-207">
+											<div class="flex-w flex-sb-m p-b-17">
+												<span class="mtext-107 cl2 p-r-20">[[${rv.accounts.username}]]
+												</span>
+											</div>
+											<p class="stext-102 cl6" style="margin-bottom: 20px;">[[${#dates.format(rv.create_date,
+												'dd-MM-yyyy HH:mm:ss')}]]</p>
+											<p class="stext-102 cl6" style="margin-bottom: 20px;">[[${rv.comment}]]</p>
+
+											<div>
+												<img style="width: 370px; height: 230px;" alt="PHOTO"
+													th:src="@{|/images/${rv.image}|}">
+											</div>
+										</div>
+									</div>								
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="bg6 flex-c-m flex-w size-302 m-t-73 p-tb-15">
+			<span class="stext-107 cl6 p-lr-25"> CATEGORIES : (
+				[[${item.categories.name}]] ) </span>
+		</div>
+	</section>
+
+
+	<!-- Related Products -->
+	<section class="sec-relate-product bg0 p-t-45 p-b-105">
+		<div class="container">
+			<div class="p-b-45">
+				<h3 class="ltext-106 cl5 txt-center">Sản Phẩm Cùng Loại</h3>
+			</div>
+
+			<!-- Slide2 -->
+			<div class="wrap-slick2">
+				<div class="row slick2">
+
+					<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15"
+						th:each="p: ${items}">
+						<!-- Block2 -->
+						<div class="block2">
+							<div class="block2-pic hov-img0">
+								<img th:src="@{|/images/${p.image}|}" alt="IMG-PRODUCT"> <a
+									th:attr="ng-click=@{|cart.add(${p.id})|}"
+									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+									Thêm Giỏ Hàng </a>
+							</div>
+
+							<div class="block2-txt flex-w flex-t p-t-14">
+								<div class="block2-txt-child1 flex-col-l ">
+									<div class="card-name">
+										<h5>
+											<a class="js-name-b2"
+												th:href="@{|/home/product/detail/${p.id}|}"
+												th:utext="${p.name}"></a>
+										</h5>
+									</div>
+									<div style="color: #FA7070; font-weight: bolder;margin-top:5px; font-size: 21px; font-family: sans-serif;">
+										<span th:utext="${#numbers.formatDecimal(p.price*(100-p.sale)/100, 0, 'POINT', 0, 'POINT')}"></span> ₫
+									</div>	
+									<div th:if="${p.sale} > '0'" style="color: #161A30; font-weight: bolder; margin-top:5px; text-decoration: line-through;">
+										<span th:utext="${#numbers.formatDecimal(p.price, 0, 'POINT', 0, 'POINT')}"></span> ₫
+									</div>	
+								</div>
+								<div class="block2-txt-child2 flex-r p-t-3">
+									<a th:attr="ng-click=@{|favorite.add(${p.id})|}"
+										class="btn-addwish-b2 dis-blockpos-relative">
+										<img class="dis-block trans-04"
+										src="/user/images/icons/icon-heart-02.png" alt="ICON">
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>

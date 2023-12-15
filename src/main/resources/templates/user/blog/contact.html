@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout :: areas(~{::title},~{::body})}">
+<head>
+
+<title>Coza Store | Contact</title>
+
+</head>
+<body>
+
+	<!-- Title page -->
+	<section class="bg-img1 txt-center p-lr-15 p-tb-40"></section>
+	<!-- Title page -->
+	<section class="bg-img1 txt-center p-lr-15 p-tb-150"
+		style="background-image: url('/user/images/bg-02.jpg'); border-radius: 20px;">
+		<!-- Breadcrumb -->
+		<div class="txt-center">
+			<a href="#" class="stext-109 cl8 hov-cl1 trans-04"
+				style="font-size: 25px;">Home</a> <i
+				class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"
+				style="font-size: 25px;"></i> <a href="#"
+				class="stext-109 cl8 hov-cl1 trans-04" style="font-size: 25px;">Contact</a>
+		</div>
+	</section>
+
+
+	<!-- Content page -->
+	<section class="bg0 p-t-104 p-b-116">
+		<div class="container">
+			<div class="flex-w flex-tr">
+				<div
+					class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+					<form action="/home/contact" method="post">
+						<h4 class="mtext-105 cl2 txt-center p-b-30">Send Us A Message
+						</h4>	
+						<h3 style="color: red; text-align: center;" th:text="${message}"></h3>
+						<br>
+						<div class="bor8 m-b-20 how-pos4-parent">						
+							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30"
+								type="text" name="username" placeholder="Username">
+								<img class="how-pos4 pointer-none"
+								src="/user/images/icons/icon-email.png" alt="ICON">
+						</div>
+						<div class="bor8 m-b-20 how-pos4-parent">
+						
+							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30"
+								type="text" name="email" placeholder="Your Email Address">
+							<img class="how-pos4 pointer-none"
+								src="/user/images/icons/icon-email.png" alt="ICON">
+						</div>
+
+						<div class="bor8 m-b-30">
+							<textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25"
+								name="msg" placeholder="How Can We Help ?"></textarea>
+						</div>
+
+						<button
+							class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+							Submit</button>
+					</form>
+				</div>
+
+				<div class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
+					<div class="flex-w w-full p-b-42">
+						<span class="fs-18 cl5 txt-center size-211"> <span
+							class="lnr lnr-map-marker"></span>
+						</span>
+
+						<div class="size-212 p-t-2">
+							<span class="mtext-110 cl2"> Address </span>
+
+							<p class="stext-115 cl6 size-213 p-t-18">Công viên phần mềm Quang Trung, QTSC Building 1, P Q.12, Thành Phố Hồ Chí Minh, Việt Nam</p>
+						</div>
+					</div>
+
+					<div class="flex-w w-full p-b-42">
+						<span class="fs-18 cl5 txt-center size-211"> <span
+							class="lnr lnr-phone-handset"></span>
+						</span>
+
+						<div class="size-212 p-t-2">
+							<span class="mtext-110 cl2"> Lets Talk </span>
+
+							<p class="stext-115 cl1 size-213 p-t-18">+84 966205580</p>
+						</div>
+					</div>
+
+					<div class="flex-w w-full">
+						<span class="fs-18 cl5 txt-center size-211"> <span
+							class="lnr lnr-envelope"></span>
+						</span>
+
+						<div class="size-212 p-t-2">
+							<span class="mtext-110 cl2"> Support </span>
+
+							<p class="stext-115 cl1 size-213 p-t-18">machvquan2301@gmail.com
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- Map -->
+	<div class="map">
+		<div class="size-303" id="google_map" data-map-x="40.691446"
+			data-map-y="-73.886787" 
+			data-scrollwhell="0" data-draggable="1" data-zoom="11">
+			<iframe
+			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.4435924065124!2d106.62525347553076!3d10.853826357760305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752bee0b0ef9e5%3A0x5b4da59e47aa97a8!2zQ8O0bmcgVmnDqm4gUGjhuqduIE3hu4FtIFF1YW5nIFRydW5n!5e0!3m2!1svi!2s!4v1695171703666!5m2!1svi!2s"
+			width="100%" height="450" style="border: 0;" allowfullscreen=""
+			loading="lazy" data-pin="/user/images/icons/pin.png" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		</div>
+		
+	</div>
+
+</body>
+</html>

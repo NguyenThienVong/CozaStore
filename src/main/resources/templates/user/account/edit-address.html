@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout :: areas(~{::title},~{::body})}">
+<head>
+
+<title>Coza Store | Address</title>
+
+</head>
+<body>
+
+	<!-- Title page -->
+	<section class="bg-img1 txt-center p-lr-15 p-tb-40"></section>
+	<!-- Title page -->
+
+	<!-- Content page -->
+	<section class="bg0 p-b-116">
+		<div>
+			<div class="flex-tr"
+				style="-webkit-flex-wrap: wrap; -moz-flex-wrap: wrap; -ms-flex-wrap: wrap; -o-flex-wrap: wrap; flex-wrap: wrap; margin-left: 5%;">
+				<div class="bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md" style="width: 95%;">
+					<h2 class="mtext-105 cl2 txt-center p-b-30"
+						style="font-weight: bold;">ĐỊA CHỈ NHẬN HÀNG</h2>
+						<br>
+					<table class="table table-hover">
+						<thead class="thead-light" style="font-family: sans-serif;">
+							<tr>			
+								<th scope="col">ID</th>
+								<th scope="col">Họ Và Tên</th>
+								<th scope="col">Điện Thoại</th>							
+								<th scope="col">Ghi Chú</th>
+								<th scope="col">Địa Chỉ</th>
+								<th scope="col">Phường / Xã</th>
+								<th scope="col">Quận / Huyện</th>
+								<th scope="col">Thành Phố / Tỉnh</th>								
+								<th scope="col">Chỉnh Sửa</th>
+								
+							</tr>
+						</thead>
+						  <tbody th:each="a : ${address}" style="font-family: sans-serif;">
+							<tr>				
+							    <th th:text="${a.id}"></th>			
+								<th th:text="${a.name}"></th>
+								<td th:text="${a.phone}"></td>
+								<td th:text="${a.notes}"></td>
+								<td th:text="${a.address}"></td>								
+								<td th:text="${a.ward}"></td>
+								<td th:text="${a.district}"></td>
+								<td th:text="${a.province}"></td>
+								<td>
+								<a th:href="@{|/home/address/${#request.remoteUser}/edit/${a.id}|}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa</a>
+								&nbsp;/&nbsp;
+								<a th:href="@{|/home/address/${#request.remoteUser}/delete/${a.id}|}" style="color: red;"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a>
+								</td>
+							</tr>
+						</tbody> 
+					</table>
+					
+					 <form th:action="@{/home/address/create}" th:object="${users}"  method="post" style="font-family: sans-serif;">
+						 <h2 class="mtext-105 cl2 txt-center p-b-30 p-t-30"
+							style="font-weight: bold;"></h2> 
+
+
+						<div class="row">		
+						<div class="form-group col-md-3" hidden="false">
+								 <input class="form-control" type="text" th:field="*{id}" hidden="true">
+								<label>ID <span style="color: red;">*</span></label> <input
+									class="form-control" type="text" th:field="*{id}" >
+							</div>									
+							<div class="form-group col-md-4">								 
+								<label>Họ Và Tên <span style="color: red;">*</span></label> <input
+									class="form-control" type="text" th:field="*{name}" name="name">
+									<i th:errors="*{name}" style="color: red; text-align: center; font-family: sans-serif;"></i>
+							</div>
+							<div class="form-group col-md-4">
+								<label>Điện Thoại <span style="color: red;">*</span></label> <input
+									class="form-control" type="text" th:field="*{phone}" name="phone">
+										 <i th:errors="*{phone}" style="color: red; text-align: center; font-family: sans-serif;"></i>
+							</div>
+							<div class="form-group col-md-4">
+								<label>Ghi Chú <span style="color: red;">*</span></label> <input
+										class="form-control" type="text" th:field="*{notes}" name="notes">
+											 <i th:errors="*{notes}" style="color: red; text-align: center; font-family: sans-serif;"></i>
+							</div>
+						</div>
+
+						 <div class="row">
+							<div class="form-group col-md-3">
+								<label>Địa Chỉ <span style="color: red;">*</span></label> <input
+									class="form-control" type="text" th:field="*{address}" name="address">
+										 <i th:errors="*{address}" style="color: red; text-align: center; font-family: sans-serif;"></i>
+							</div>
+							<div class="form-group col-md-3">
+								<label>Phường / Xã <span style="color: red;">*</span></label> <input
+									class="form-control" type="text" th:field="*{ward}" name="ward">
+										 <i th:errors="*{ward}" style="color: red; text-align: center; font-family: sans-serif;"></i>
+							</div>
+							<div class="form-group col-md-3">
+								<label>Quận / Huyện <span style="color: red;">*</span></label> <input
+									class="form-control" type="text" th:field="*{district}" name="district">
+										 <i th:errors="*{district}" style="color: red; text-align: center; font-family: sans-serif;"></i>
+							</div>
+							<div class="form-group col-md-3">
+								<label>Thành Phố / Tỉnh<span style="color: red;">*</span></label>
+								 <input class="form-control" type="text" th:field="*{province}" name="province">	
+									 <i th:errors="*{province}" style="color: red; text-align: center; font-family: sans-serif;"></i>
+							</div>
+							
+						</div> 
+						<br>
+						<div class="row">
+						<div class="form-group col-md-4">
+								<a class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" th:href="@{|/home/profile/${#request.remoteUser}|}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+ 								<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+								</svg>&nbsp; Thông tin cá nhân</a>
+							</div>
+							
+							<div class="form-group col-md-2 m-l-300">	
+								<button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" type="submit" >Mới</button>
+							</div>
+							<div class="form-group col-md-2 ">
+								<a class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" th:href="@{/home/address/save}">Cập nhật</a>
+							</div>
+							
+						</div>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+</body>
+</html>

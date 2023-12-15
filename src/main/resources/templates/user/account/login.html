@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout :: areas(~{::title},~{::body})}">
+<head>
+
+<title>Coza Store | Login</title>
+
+</head>
+<body>
+
+	<!-- Title page -->
+	<section class="bg-img1 txt-center p-lr-15 p-tb-40"></section>
+	<!-- Title page -->
+	<section class="bg-img1 txt-center p-lr-15 p-tb-150"
+		style="background-image: url('/user/images/bg-02.jpg'); border-radius: 20px;">
+		<!-- Breadcrumb -->
+		<div class="txt-center">
+			<a href="#" class="stext-109 cl8 hov-cl1 trans-04"
+				style="font-size: 25px;">Home</a> <i
+				class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"
+				style="font-size: 25px;"></i> <a href="#"
+				class="stext-109 cl8 hov-cl1 trans-04" style="font-size: 25px;">Login</a>
+		</div>
+	</section>
+
+	<div style="margin-left: 32%">
+		<!-- Content page -->
+		<section class="bg0 p-t-104 p-b-116">
+			<div class="container">
+				<div class="flex-w flex-tr">
+					<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+						<form th:action="@{/security/login}" method="post">
+							<h2 class="mtext-105 cl2 txt-center p-b-30" style="font-weight: bold;">LOGIN</h2>
+
+							<label>Username or Email address <span
+								style="color: red;">*</span></label>
+							<div class="bor8 m-b-20 how-pos4-parent">
+								<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30"
+									type="text" name="username">
+							</div>
+							<label>Password <span style="color: red;">*</span></label>
+							<div class="bor8 m-b-20 how-pos4-parent">
+								<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30"
+									type="password" name="password">
+							</div>
+							<div class="row" style="font-weight: bold;">
+								&emsp;<input style="width: 15px;" name="remember-me" type="checkbox" id="rememberme" checked="checked">&ensp; Remember me ?
+							</div>
+							<br>
+							<button onclick="myFunction()" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">Login</button>
+							<script>
+								function myFunction() {
+									Swal.fire({
+										  icon: 'success',
+										  title: 'Success',
+										  showConfirmButton: false,
+										  timer: 300
+										})
+								}
+							</script>
+							<br>
+							<div>
+								<a th:href="@{/home/forgot-password}">Lost your password ?</a>
+							</div>
+						</form>
+						<hr>
+						<div style="text-align: center;">
+							<a style=" color: #696969; font-size: 17px;" href="/oauth2/authorization/google"> <img style="width: 20px;" src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png">&ensp;Google</a>
+							 &emsp;|&emsp;
+							<a style=" color: #696969; font-size: 17px;" href="/oauth2/authorization/facebook"><img style="width: 20px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/2048px-2023_Facebook_icon.svg.png">&ensp;Facebook</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+
+</body>
+</html>

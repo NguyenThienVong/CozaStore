@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout :: areas(~{::title},~{::body})}">
+<head>
+
+<title>Coza Store | Profile</title>
+
+</head>
+<body>
+
+	<!-- Title page -->
+	<section class="bg-img1 txt-center p-lr-15 p-tb-40"></section>
+	<!-- Title page -->
+
+
+
+
+
+	<section class="bg0  p-b-116 mt-2">
+		<div>
+			<div class="flex-tr"
+				style="-webkit-flex-wrap: wrap; -moz-flex-wrap: wrap; -ms-flex-wrap: wrap; -o-flex-wrap: wrap; flex-wrap: wrap; margin-left: 27%;">
+				<div class="bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md"
+					style="width: 65%;">
+					<form th:object="${profile}" method="post"
+						enctype="multipart/form-data" th:action="@{/home/profile/edit}">
+						<h2 class="mtext-105 cl2 txt-center p-b-30"
+							style="font-weight: bold;">THÔNG TIN CÁ NHÂN</h2>
+
+						<div class="row">
+							<div class="form-group col-md-6">
+								<label style="font-weight: bold;"></label> <img
+									style="width: 360px; height: 355px;"
+									th:src="@{|/images/*{photo}|}" alt="IMG-BANNER"> <br>
+							</div>
+							<div class="form-group col-md-6">
+
+								<div class="form-group col-md-12">
+									<br> <label>Tên Người Dùng <span
+										style="color: red;">*</span></label> <input class="form-control"
+										th:field="*{username}" type="text" name="username"
+										readonly="readonly">
+								</div>
+								<div class="form-group col-md-12">
+									<label>Mật Khẩu <span style="color: red;">*
+											(Token)</span></label> <input class="form-control" type="text"
+										th:field="*{password}" readonly="readonly">
+								</div>
+								<div class="form-group col-md-12">
+									<label>Ảnh Đại Diện<span style="color: red;">*</span></label> <input
+										class="form-control" type="file" name="photo">
+								</div>
+							</div>
+						</div>
+						<br>
+
+						<div class="row">
+							<div class="form-group col-md-6">
+								<label>Họ <span style="color: red;">*</span></label> <input
+									class="form-control" type="text" th:field="*{last_name}"
+									name="last_name">
+							</div>
+							<div class="form-group col-md-6">
+								<label>Tên <span style="color: red;">*</span></label> <input
+									class="form-control" type="text" th:field="*{first_name}"
+									name="first_name">
+							</div>
+
+						</div>
+
+
+						<div class="form-group">
+							<label>Email <span style="color: red;">*</span></label> <input
+								class="form-control" type="text" name="email"
+								th:field="*{email}">
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-6">
+								<label>Điện Thoại <span style="color: red;">*</span></label> <input
+									class="form-control" type="number" name="phone"
+									th:field="*{phone}">
+							</div>
+							<div class="form-group col-md-6">
+								<label>Giới Tính <span style="color: red;">*</span></label>
+								&emsp;
+								<div class="form-check form-check-inline ">
+									<input class="form-check-input" type="radio" name="gender"
+										th:field="*{gender}" value="true"><span>Nam</span>
+								</div>
+								&emsp;
+								<div class="form-check form-check-inline ">
+									<input class="form-check-input" type="radio" name="gender"
+										th:field="*{gender}" value="false"><span>Nữ</span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-6">
+								<label>Ngày Sinh <span style="color: red;">*</span></label> <input
+									class="form-control" type="date" name="birthday"
+									th:field="*{birthday}">
+							</div>
+							<div class="form-group col-md-6">
+								<label>Quốc Tịch <span style="color: red;">*</span></label> <input
+									class="form-control" type="text" name="nationality"
+									th:field="*{nationality}">
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="form-group col-md-4">
+								<button type="submit" onclick="myFunction()"
+									class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">Cập
+									Nhật</button>
+							</div>
+
+							<div class="form-group col-md-4">
+								<a
+									class="btn flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer"
+									th:href="@{|/home/address/${#request.remoteUser}|}">Địa Chỉ
+									Giao Hàng &nbsp;<svg xmlns="http://www.w3.org/2000/svg"
+										width="16" height="16" fill="currentColor"
+										class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+								  <path fill-rule="evenodd"
+											d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+								</svg>
+								</a>
+							</div>
+							<div class="form-group col-md-4 ">
+								<a
+									class="btn flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer"
+									th:href="@{|/home/vouchers/${#request.remoteUser}|}">Mã Giảm Giá &nbsp;<svg xmlns="http://www.w3.org/2000/svg"
+										width="16" height="16" fill="currentColor"
+										class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+								  <path fill-rule="evenodd"
+											d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+								</svg>
+								</a>
+							</div>
+
+						</div>
+
+						<script>
+							function myFunction() {
+								Swal.fire({
+									icon : 'success',
+									title : 'Cập nhật thành công',
+									showConfirmButton : false,
+									timer : 1500
+								})
+							}
+						</script>
+						<br>
+					</form>
+
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>COZA STORE | ADMIN</title>
+
+<link rel="stylesheet"
+	href="/admin/assets/vendors/mdi/css/materialdesignicons.min.css" />
+<link rel="stylesheet"
+	href="/admin/assets/vendors/flag-icon-css/css/flag-icon.min.css" />
+<link rel="stylesheet"
+	href="/admin/assets/vendors/css/vendor.bundle.base.css" />
+<link rel="stylesheet"
+	href="/admin/assets/vendors/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet"
+	href="/admin/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" />
+<link rel="stylesheet" href="/admin/assets/css/style.css" />
+
+<link rel="icon" type="image/png" href="/user/images/icons/favicon.png" />
+<!-- ANGULARJS -->
+<!-- <base href="/"> -->
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-route/1.8.2/angular-route.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- CHART -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- EXPORT -->
+<script
+	src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.2.13/jspdf.plugin.autotable.min.js"></script>
+<style>
+input[type="file"] {
+	display: none;
+}
+
+.modal-content {
+	width: 1300px;
+	left: -350px;
+	top: -45px;
+	overflow: auto;
+}
+
+#myChart {
+	width: 1250px !important;
+	height: 550px !important;
+}
+
+.custom-file-upload {
+	border: 1px solid #ccc;
+	display: inline-block;
+	padding: 6px 12px;
+	cursor: pointer;
+}
+
+.btn-5 {
+	width: 130px;
+	height: 40px;
+	line-height: 42px;
+	padding: 0;
+	border: none;
+	background: rgb(18, 164, 221);
+	color: white;
+}
+
+.btn-5:hover {
+	color: black;
+	background: transparent;
+	box-shadow: none;
+	border: 1px solid black;
+}
+
+.card1 {
+	z-index: 0;
+	background-color: #ECEFF1;
+	padding-bottom: 20px;
+	margin-top: 10px;
+	margin-bottom: 50px;
+	border-radius: 20px;
+}
+
+.top {
+	padding-top: 40px;
+	padding-left: 13% !important;
+	padding-right: 13% !important;
+}
+
+/*Icon progressbar*/
+#progressbar {
+	margin-bottom: 30px;
+	overflow: hidden;
+	color: #455A64;
+	padding-left: 0px;
+	margin-top: 30px;
+}
+
+#progressbar li {
+	list-style-type: none;
+	font-size: 13px;
+	width: 25%;
+	float: left;
+	position: relative;
+	font-weight: 400;
+}
+
+#progressbar .step0:before {
+	font-family: FontAwesome;
+	content: "\f10c";
+	color: #fff;
+}
+
+#progressbar li:before {
+	width: 40px;
+	height: 40px;
+	line-height: 45px;
+	display: block;
+	font-size: 20px;
+	background: #C5CAE9;
+	border-radius: 50%;
+	margin: auto;
+	padding: 0px;
+}
+
+/*ProgressBar connectors*/
+#progressbar li:after {
+	content: '';
+	width: 100%;
+	height: 12px;
+	background: #C5CAE9;
+	position: absolute;
+	left: 0;
+	top: 16px;
+	z-index: -1;
+}
+
+#progressbar li:last-child:after {
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	position: absolute;
+	left: -50%;
+}
+
+#progressbar li:nth-child(2):after, #progressbar li:nth-child(3):after {
+	left: -50%;
+}
+
+#progressbar li:first-child:after {
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	position: absolute;
+	left: 50%;
+}
+
+#progressbar li:last-child:after {
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+#progressbar li:first-child:after {
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+/*Color number of the step and the connector before it*/
+#progressbar li.active:before, #progressbar li.active:after {
+	background: #651FFF;
+}
+
+#progressbar li.active:before {
+	font-family: FontAwesome;
+	content: "\f00c";
+}
+
+.icon {
+	width: 60px;
+	height: 60px;
+	margin-right: 15px;
+}
+
+.icon-content {
+	padding-bottom: 20px;
+}
+
+@media screen and (max-width: 992px) {
+	.icon-content {
+		width: 50%;
+	}
+}
+</style>
+</head>
+
+<body ng-app="admin-app">
+	<div class="container-scroller">
+		<nav class="sidebar sidebar-offcanvas" id="sidebar">
+			<div
+				class="text-center sidebar-brand-wrapper d-flex align-items-center">
+				<a class="nav-link" style="margin: 30px" th:href="@{/home/index}">
+					<img style="width: 120%" src="/user/images/icons/logo-01.png"
+					alt="IMG-LOGO">
+				</a>
+			</div>
+			<ul class="nav">
+				<li class="nav-item nav-profile"><a href="#" class="nav-link">
+						<div class="nav-profile-image" style="width: 70px; height: 70px;">
+							<img th:src="@{|/images/${admin.photo}|}" alt="profile"
+								style="width: 70px; height: 70px;" /> <span
+								class="login-status online"></span>
+						</div>
+						<div class="nav-profile-text d-flex flex-column pr-3">
+							<span class="font-weight-medium mb-2"
+								style="font-family: sans-serif; font-weight: bold;">[[${admin.last_name}]]
+								[[${admin.first_name}]]</span> <span class="font-weight-normal">100.000.000
+								₫</span>
+						</div>
+				</a></li>
+				<li class="nav-item"><a class="nav-link" href="#!order"> <i
+						class="mdi mdi-home menu-icon"></i> <span class="menu-title">ORDERS</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link" data-toggle="collapse"
+					href="#management" aria-expanded="true" aria-controls="management">
+						<i class="mdi mdi-crosshairs-gps menu-icon"></i> <span
+						class="menu-title">MANAGEMENT</span>
+				</a>
+					<div class="collapse show" id="management">
+						<ul class="nav flex-column sub-menu">
+							<li class="nav-item"><a class="nav-link" href="#!product">MANAGE
+									PRODUCT</a></li>
+							<li class="nav-item"><a class="nav-link" href="#!category">MANAGE
+									CATEGORY</a></li>
+							<li class="nav-item"><a class="nav-link" href="#!account">MANAGE
+									ACCOUNT</a></li>
+							<li class="nav-item"><a class="nav-link" href="#!authority">MANAGE
+									AUTH</a></li>
+							<li class="nav-item"><a class="nav-link" href="#!blog">MANAGE
+									BLOG</a></li>
+							<li class="nav-item"><a class="nav-link" href="#!voucher">MANAGE
+									VOUCHER</a></li>
+						</ul>
+					</div></li>
+				<li class="nav-item"><a class="nav-link" href="#!discount">
+						<i class="mdi mdi-format-list-bulleted menu-icon"></i> <span
+						class="menu-title">ON SALES</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link"
+					data-toggle="collapse1" href="#statistical" aria-expanded="true"
+					aria-controls="statistical"> <i
+						class="mdi mdi-crosshairs-gps menu-icon"></i> <span
+						class="menu-title">STATISTICAL</span>
+				</a>
+					<div class="collapse1 show" id="statistical">
+						<ul class="nav flex-column sub-menu">
+							<li class="nav-item"><a class="nav-link" href="#!top-product">TOP
+									PRODUCT</a></li>
+							<li class="nav-item"><a class="nav-link" href="#!top-customer">TOP
+									CUSTOMER</a></li>
+							<li class="nav-item"><a class="nav-link" href="#!top-category">TOP
+									CATEGORY</a></li>
+							<li class="nav-item"><a class="nav-link" href="#!revenue-order">REVENUE ORDER</a></li>
+						</ul>
+					</div></li>
+			</ul>
+		</nav>
+		<div class="container-fluid page-body-wrapper">
+			<div id="theme-settings" class="settings-panel">
+				<i class="settings-close mdi mdi-close"></i>
+				<p class="settings-heading">SIDEBAR SKINS</p>
+				<div class="sidebar-bg-options selected" id="sidebar-default-theme">
+					<div class="img-ss rounded-circle bg-light border mr-3"></div>
+					Default
+				</div>
+				<div class="sidebar-bg-options" id="sidebar-dark-theme">
+					<div class="img-ss rounded-circle bg-dark border mr-3"></div>
+					Dark
+				</div>
+				<p class="settings-heading mt-2">HEADER SKINS</p>
+				<div class="color-tiles mx-0 px-4">
+					<div class="tiles light"></div>
+					<div class="tiles dark"></div>
+				</div>
+			</div>
+			<nav class="navbar col-lg-12 col-12 p-lg-0 fixed-top d-flex flex-row">
+				<div
+					class="navbar-menu-wrapper d-flex align-items-stretch justify-content-between">
+					<a class="navbar-brand brand-logo-mini align-self-center d-lg-none"
+						href="index.html"> <img
+						src="/admin/assets/images/logo-mini.svg" alt="logo" />
+					</a>
+					<button
+						class="navbar-toggler navbar-toggler align-self-center mr-2"
+						type="button" data-toggle="minimize">
+						<i class="mdi mdi-menu"></i>
+					</button>
+					<ul class="navbar-nav">
+						<li class="nav-item dropdown"><a
+							class="nav-link count-indicator dropdown-toggle"
+							id="notificationDropdown" href="#" data-toggle="dropdown"> <i
+								class="mdi mdi-bell-outline"></i> <span
+								class="count count-varient1">7</span>
+						</a>
+							<div
+								class="dropdown-menu navbar-dropdown navbar-dropdown-large preview-list"
+								aria-labelledby="notificationDropdown">
+								<h6 class="p-3 mb-0">Notifications</h6>
+								<a class="dropdown-item preview-item">
+									<div class="preview-thumbnail">
+										<img src="/admin/assets/images/faces/face4.jpg" alt=""
+											class="profile-pic" />
+									</div>
+									<div class="preview-item-content">
+										<p class="mb-0">
+											Dany Miles <span class="text-small text-muted">commented
+												on your photo</span>
+										</p>
+									</div>
+								</a> <a class="dropdown-item preview-item">
+									<div class="preview-thumbnail">
+										<img src="/admin/assets/images/faces/face3.jpg" alt=""
+											class="profile-pic" />
+									</div>
+									<div class="preview-item-content">
+										<p class="mb-0">
+											James <span class="text-small text-muted">posted a
+												photo on your wall</span>
+										</p>
+									</div>
+								</a> <a class="dropdown-item preview-item">
+									<div class="preview-thumbnail">
+										<img src="/admin/assets/images/faces/face2.jpg" alt=""
+											class="profile-pic" />
+									</div>
+									<div class="preview-item-content">
+										<p class="mb-0">
+											Alex <span class="text-small text-muted">just
+												mentioned you in his post</span>
+										</p>
+									</div>
+								</a>
+								<div class="dropdown-divider"></div>
+								<p class="p-3 mb-0">View all activities</p>
+							</div></li>
+						<li class="nav-item dropdown d-none d-sm-flex"><a
+							class="nav-link count-indicator dropdown-toggle"
+							id="messageDropdown" href="#" data-toggle="dropdown"> <i
+								class="mdi mdi-email-outline"></i> <span
+								class="count count-varient2">5</span>
+						</a>
+							<div
+								class="dropdown-menu navbar-dropdown navbar-dropdown-large preview-list"
+								aria-labelledby="messageDropdown">
+								<h6 class="p-3 mb-0">Messages</h6>
+								<a class="dropdown-item preview-item">
+									<div class="preview-item-content flex-grow">
+										<span class="badge badge-pill badge-success">Request</span>
+										<p class="text-small text-muted ellipsis mb-0">Suport
+											needed for user123</p>
+									</div>
+									<p class="text-small text-muted align-self-start">4:10 PM</p>
+								</a>
+							</div></li>
+					</ul>
+					<ul class="navbar-nav navbar-nav-right ml-lg-auto">
+						<li class="nav-item nav-profile dropdown border-0"><a
+							class="nav-link dropdown-toggle" id="profileDropdown" href="#"
+							data-toggle="dropdown"> <img class="nav-profile-img mr-2"
+								alt="AVT" th:src="@{|/images/${admin.photo}|}" /> <span
+								class="profile-name" style="font-size: 15x; color: #fff;">[[${#request.remoteUser}]]</span>
+						</a>
+							<div class="dropdown-menu navbar-dropdown w-100"
+								aria-labelledby="profileDropdown">
+								<a class="dropdown-item"
+									th:href="@{|/home/profile/${admin.username}|}"> <i
+									class="mdi mdi-account mr-2 text-success"></i> Profile
+								</a> <a class="dropdown-item" th:href="@{/security/logoff}"> <i
+									class="mdi mdi-logout mr-2 text-primary"></i> Logout
+								</a>
+							</div></li>
+					</ul>
+					<button
+						class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
+						type="button" data-toggle="offcanvas">
+						<span class="mdi mdi-menu"></span>
+					</button>
+				</div>
+			</nav>
+			<!-- MAIN PANEL -->
+			<div class="main-panel">
+				<div class="content-wrapper pt-2">
+					<!-- MAIN -->
+					<div class="ng-view"></div>
+					<!-- END MAIN -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--  Scripts -->
+	<script src="/angularJS/admin-app.js"></script>
+	<script src="/angularJS/category-ctrl.js"></script>
+	<script src="/angularJS/authority-ctrl.js"></script>
+	<script src="/angularJS/blog-ctrl.js"></script>
+	<script src="/angularJS/account-ctrl.js"></script>
+	<script src="/angularJS/product-ctrl.js"></script>
+	<script src="/angularJS/voucher-ctrl.js"></script>
+	<script src="/angularJS/order-ctrl.js"></script>
+	<script src="/angularJS/discount-ctrl.js"></script>
+
+	<!-- Container - Scroller -->
+	<script src="/admin/assets/vendors/js/vendor.bundle.base.js"></script>
+	<script src="/admin/assets/vendors/chart.js/Chart.min.js"></script>
+	<script
+		src="/admin/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+	<script src="/admin/assets/vendors/flot/jquery.flot.js"></script>
+	<script src="/admin/assets/vendors/flot/jquery.flot.resize.js"></script>
+	<script src="/admin/assets/vendors/flot/jquery.flot.categories.js"></script>
+	<script src="/admin/assets/vendors/flot/jquery.flot.fillbetween.js"></script>
+	<script src="/admin/assets/vendors/flot/jquery.flot.stack.js"></script>
+	<script src="/admin/assets/vendors/flot/jquery.flot.pie.js"></script>
+	<script src="/admin/assets/js/off-canvas.js"></script>
+	<script src="/admin/assets/js/hoverable-collapse.js"></script>
+	<script src="/admin/assets/js/misc.js"></script>
+	<script src="/admin/assets/js/dashboard.js"></script>
+
+</body>
+</html>

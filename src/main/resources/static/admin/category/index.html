@@ -1,0 +1,59 @@
+<div class="row mt-5">
+	<div class="row col-md-12">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-7">
+			<div class="row panel">
+				<div class="form-group col-sm-8">
+					<div class="panel-footer">
+						<label>Category ID</label> 
+						<input ng-model="form.id" class="form-control" readonly="readonly"> 
+						<label>Category Name</label> 
+						<input ng-model="form.name" class="form-control">
+					</div><br>					
+						
+					<div class="panel-footer text-center mt-4 mb-4">
+						<button ng-click="create()" class="btn btn-info">
+							<i class="glyphicon glyphicon-plus"></i> Create
+						</button>
+						<button ng-click="update()" class="btn btn-info">
+							<i class="glyphicon glyphicon-save"></i> Update
+						</button>
+						<button ng-click="delete(form)" class="btn btn-info">
+							<i class="glyphicon glyphicon-trash"></i> Delete
+						</button>
+						<button ng-click="reset()" class="btn btn-info">
+							<i class="glyphicon glyphicon-refresh"></i> New
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-8 offset-2">
+		<table class="table table-striped border">
+			<thead class="bg-info" style="color: dark; text-transform: uppercase; text-align: center;">
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Edit</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in cates" style="text-align: center;">
+					<th>{{item.id}}</th>
+					<td>{{item.name}}</td>
+					<td>
+						<div class="btn-group btn-group-xs">
+							<button ng-click="edit(item)" class="btn btn-success mr-3">
+								<span class="glyphicon glyphicon-edit">Edit</span>
+							</button>
+							<button ng-click="delete(item)" class="btn btn-danger">
+								<span class="glyphicon glyphicon-remove">Del</span>
+							</button>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,28 @@
+	<div class="col-md-12 mt-5">
+	<div class="col-md-12 mt-3 mb-5 offset-1">
+		<canvas id="myChart" width="400" height="200"></canvas>
+	</div>
+		<table class="table table-striped table-hover">
+			<thead class="bg-info"
+				style="text-transform: uppercase; text-align: center;">
+				<tr>
+					<th>No.</th>
+					<th>Image</th>
+					<th>Name</th>
+					<th>Purchases</th>
+					<th>Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in tops" style="text-align: center;">
+					<td>{{$index+1}}</td>
+					<th><img alt="{{item.accounts.photo}}"
+						style="width: 80px; height: 80px; border-radius: 0px;"
+						src="/images/{{item.accounts.photo}}"></th>
+					<td>{{item.accounts.username}}</td>					
+					<td>{{item.count}}</td>
+					<td class="text-info">{{item.sum|number:0}} VNĐ</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>

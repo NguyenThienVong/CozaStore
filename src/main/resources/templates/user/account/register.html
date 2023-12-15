@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout :: areas(~{::title},~{::body})}">
+<head>
+
+<title>Coza Store | Register</title>
+
+</head>
+<body>
+
+	<!-- Title page -->
+	<section class="bg-img1 txt-center p-lr-15 p-tb-40"></section>
+	<!-- Title page -->
+	<section class="bg-img1 txt-center p-lr-15 p-tb-150"
+		style="background-image: url('/user/images/bg-02.jpg'); border-radius: 20px;">
+		<!-- Breadcrumb -->
+		<div class="txt-center">
+			<a href="#" class="stext-109 cl8 hov-cl1 trans-04"
+				style="font-size: 25px;">Home</a> <i
+				class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"
+				style="font-size: 25px;"></i> <a href="#"
+				class="stext-109 cl8 hov-cl1 trans-04" style="font-size: 25px;">Login</a>
+		</div>
+	</section>
+
+	<div style="margin-left: 32%">
+		<!-- Content page -->
+		<section class="bg0 p-t-104 p-b-116">
+			<div class="container">
+				<div class="flex-w flex-tr">
+					<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+						<form action="/home/register/create" method="get" th:object="${acc}">
+							<h2 class="mtext-105 cl2 txt-center p-b-30" style="font-weight: bold;">ĐĂNG KÝ</h2>
+							
+															
+						<div class="row">
+							<div class="form-group col-md-6">
+								<label>Username <span style="color: red;">*</span></label>
+								<input class="form-control" type="text" name="username">
+								<br>
+								<p th:errors="*{username}" style="color: red; text-align: center; font-family: sans-serif;"></p>
+							</div>
+							<div class="form-group col-md-6">
+								<label>Password <span style="color: red;">*</span></label>
+								<input class="form-control" type="password" name="password">
+								<br>
+								 <p th:errors="*{password}" style="color: red;  text-align: center; font-family: sans-serif;"></p>
+							</div>
+						</div>
+							
+							<div class="form-group">
+								<label>Email <span style="color: red;">*</span></label>
+								<input class="form-control" type="text" name="email">
+								<br> 
+								<p th:errors="*{email}" style="color: red;  text-align: center; font-family: sans-serif;"></p>
+							</div>
+								
+							<br>
+							<button onclick="myFunction()" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">Register</button>
+							<br>
+							<a class="btn flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" th:href="@{/security/login/form}">Login</a>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+
+</body>
+</html>

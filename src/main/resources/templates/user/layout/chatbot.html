@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body th:fragment="chatbot">
+
+		<div class="form-chatbot">
+		<button class="chatbot-toggler">
+			<span class="material-symbols-rounded">headset_mic</span> 
+			<span class="material-symbols-outlined">close</span>
+		</button>
+		<div class="chatbot">
+			<header>
+				<h2>Chatbot</h2>
+				<span class="close-btn material-symbols-outlined">close</span>
+			</header>
+			<ul class="chatbox">
+				<li class="chat incoming"><span
+					class="material-symbols-outlined">smart_toy</span>
+					<p>Xin chào 👋 <br>Tôi có thể giúp gì cho bạn ?</p>
+				</li>
+			</ul>
+			<div class="chat-input">
+				<textarea placeholder="Enter a message..." spellcheck="false"
+					required></textarea>
+				<span id="send-btn" class="material-symbols-rounded">send</span>
+			</div>
+		</div>
+		</div>
+
+	
+</body>
+</html>	

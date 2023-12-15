@@ -1,0 +1,841 @@
+<div class="row mt-5">
+	<div class="col-12">
+		<div class="row">
+			<div class="col-4">
+				<table class="table">
+					<tbody>
+						<tr>
+							<th class="column-1"><input type="text" class="form-control"
+								value="ID Đơn Hàng" /></th>
+							<td class="column-1"><input type="text" class="form-control"
+								ng-model="form.id" /></td>
+						</tr>
+						<tr>
+							<th><input type="text" class="form-control" value="Người Mua" /></th>
+							<td><input type="text" class="form-control" ng-model="form.accounts.username" /></td>
+						</tr>
+						<!---------------------------------------------------------------------------------------->
+						<tr>
+							<th><input type="text" class="form-control" value="Số Điện Thoại" /></th>
+							<td class="column-1" ng-if="form.ship_phone === ''">
+							    <input type="text" class="form-control" ng-model="form.account_address.phone" />
+							</td>
+							<td class="column-1" ng-if="form.ship_phone !== ''">
+							    <input type="text" class="form-control" ng-model="form.ship_phone" />
+							</td>
+						</tr>
+						<tr>
+						    <th><input type="text" class="form-control" value="Ghi Chú" /></th>
+						    <td ng-if="form.ship_notes === ''">
+						        <input type="text" class="form-control" ng-model="form.account_address.notes" />
+						    </td>
+						    <td ng-if="form.ship_notes !== ''">
+						        <input type="text" class="form-control" ng-model="form.ship_notes" />
+						    </td>
+						</tr>
+						<tr>
+							<th><input type="text" class="form-control" value="Địa Chỉ" /></th>
+							<td ng-if="form.ship_address === ''">
+						        <input type="text" class="form-control" ng-model="form.account_address.address" />
+						    </td>
+						    <td ng-if="form.ship_address !== ''">
+						        <input type="text" class="form-control" ng-model="form.ship_address" />
+						    </td>
+						</tr>
+						<tr>
+							<th><input type="text" class="form-control" value="Phường / Xã" /></th>
+							<td ng-if="form.ship_ward === ''">
+						        <input type="text" class="form-control" ng-model="form.account_address.ward" />
+						    </td>
+						    <td ng-if="form.ship_ward !== ''">
+						        <input type="text" class="form-control" ng-model="form.ship_ward" />
+						    </td>
+						</tr>
+						<tr>
+							<th><input type="text" class="form-control" value="Quận /Huyện" /></th>
+							<td ng-if="form.ship_district === ''">
+						        <input type="text" class="form-control" ng-model="form.account_address.district" />
+						    </td>
+						    <td ng-if="form.ship_district !== ''">
+						        <input type="text" class="form-control" ng-model="form.ship_district" />
+						    </td>
+						</tr>
+						<tr>
+							<th><input type="text" class="form-control" value="Thành Phố / Tỉnh" /></th>
+							<td ng-if="form.ship_province === ''">
+						        <input type="text" class="form-control" ng-model="form.account_address.province" />
+						    </td>
+						    <td ng-if="form.ship_province !== ''">
+						        <input type="text" class="form-control" ng-model="form.ship_province" />
+						    </td>
+						</tr>
+						<!---------------------------------------------------------------------------------------->
+						<tr>
+							<th><input type="text" class="form-control"
+								value="Đơn Vị Giao Hàng" /></th>
+							<td class="column-1"><input type="text" class="form-control"
+								ng-model="form.ship_delivery" /></td>
+						</tr>
+						<tr>
+							<th><input type="text" class="form-control"
+								value="Ngày Tạo Đơn" /></th>
+							<td class="column-1"><input type="text" class="form-control"
+								ng-model="form.create_date|date:'dd/MM/yyyy'" /></td>
+						</tr>
+						<tr>
+							<th><input type="text" class="form-control" value="Phí Gửi Hàng" /></th>
+							<td class="column-1"><input type="text" class="form-control"
+								ng-model="form.ship_fee|number:0" /></td>
+						</tr>
+						<tr>
+							<th><input type="text" class="form-control" value="Tổng" /></th>
+							<td class="column-1"><input type="text" class="form-control"
+								ng-model="form.total|number:0" /></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="col-8">
+				<ul class="nav nav-tabs text-center" id="myTab" role="tablist"
+					style="font-family: sans-serif; text-transform: uppercase;">
+					<li class="nav-item" role="presentation" style="width: 202px;">
+						<a class="nav-link active text-light bg-dark" id="home-tab"
+						data-toggle="tab" href="#home" target="_self" role="tab"
+						aria-controls="home" aria-selected="true">Tất Cả Đơn</a>
+					</li>
+					<li class="nav-item" role="presentation" style="width: 180px;"><a
+						class="nav-link text-light bg-dark" id="profile-tab"
+						data-toggle="tab" href="#profile" target="_self" role="tab"
+						aria-controls="profile" aria-selected="false">Chờ Xác Nhận</a></li>
+					<li class="nav-item" role="presentation" style="width: 180px;"><a
+						class="nav-link bg-dark text-light" id="Confirmed-tab"
+						data-toggle="tab" href="#Confirmed" target="_self" role="tab"
+						aria-controls="Confirmed" aria-selected="false">Đã Xác Nhận</a></li>
+					<li class="nav-item" role="presentation" style="width: 180px;"><a
+						class="nav-link bg-dark text-light" id="Delivery-tab"
+						data-toggle="tab" href="#Delivery" target="_self" role="tab"
+						aria-controls="Delivery" aria-selected="false">Đang Giao Hàng</a>
+					</li>
+					<li class="nav-item" role="presentation" style="width: 180px;"><a
+						class="nav-link bg-dark text-light" id="Complete-tab"
+						data-toggle="tab" href="#Complete" target="_self" role="tab"
+						aria-controls="Complete" aria-selected="false">Hoàn Thành</a></li>
+					<li class="nav-item" role="presentation"><a
+						class="nav-link bg-dark text-light" id="Cancel-tab"
+						data-toggle="tab" href="#Cancel" target="_self" role="tab"
+						aria-controls="Cancel" aria-selected="false">Hủy Đơn</a></li>
+				</ul>
+				<div class="tab-content mt-0 p-0" id="myTabContent">
+					<div class="tab-pane fade show active" id="home" role="tabpanel"
+						aria-labelledby="home-tab">
+						<div class="card">
+							<div class="card-body">
+								<h1 class="card-title" style="font-family: sans-serif; font-weight: bold;"># TẤT CẢ ĐƠN HÀNG</h1>
+								<form>
+									<div class="form-group">
+										<input type="text" id="el" autocomplete="off"
+											class="form-control" placeholder="Search..."
+											style="border: 1px solid black" ng-model="kw"
+											ng-change="findByAllOrder()">
+									</div>
+								</form>
+								<div class="table-responsive">
+									<table class="table table-hover" style="cursor: pointer;">
+										<thead>
+											<tr>
+												<th>ID</th>
+												<th>Tài Khoản</th>
+												<th>Ngày Mua</th>
+												<th>Thanh Toán</th>
+												<th>Vận Chuyển</th>
+												<th>Tổng</th>
+												<th>Trạng Thái</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="item in pager.items" ng-click="edit(item)">
+												<td>{{item.id}}</td>
+												<td>{{item.accounts.username}}</td>
+												<td class="text-info">{{item.create_date | date:
+													'dd/MM/yyyy'}}</td>
+												<td>{{item.ship_pay}}</td>
+												<td>{{item.ship_delivery}}</td>
+												<td class="text-info">{{item.total|number:0}} VNĐ</td>
+												<td><label ng-show="item.order_status.id == 'Pending'"
+													class="badge badge-warning">Chưa Xác Nhận</label> <label
+													ng-show="item.order_status.id == 'Confirm'"
+													class="badge badge-info">Đã Xác Nhận</label> <label
+													ng-show="item.order_status.id == 'Delivery'"
+													class="badge badge-primary">Đang Giao Hàng</label> <label
+													ng-show="item.order_status.id == 'Complete'"
+													class="badge badge-success">Đã Giao Hàng</label> <label
+													ng-show="item.order_status.id == 'Cancel'"
+													class="badge badge-danger">Hủy Đơn</label></td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="text-center mt-2">
+										<button ng-click="pager.first()" class="btn btn-secondary"><<</button>
+										<button ng-click="pager.pre()" class="btn btn-secondary"><</button>
+										<button class="btn btn-primary">{{pager.page + 1}} of
+											{{pager.count}}</button>
+										<button ng-click="pager.next()" class="btn btn-secondary">></button>
+										<button ng-click="pager.last()" class="btn btn-secondary">>></button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="profile" role="tabpanel"
+						aria-labelledby="profile-tab">
+						<div class="card">
+							<div class="card-body">
+								<h1 class="card-title" style="font-family: sans-serif; font-weight: bold;"># CHƯA XÁC NHẬN</h1>
+								<div class="table-responsive">
+									<table class="table table-hover" style="cursor: pointer;">
+										<thead>
+											<tr>
+												<th>ID</th>
+												<th>Tài Khoản</th>
+												<th>Ngày Mua</th>
+												<th>Thanh Toán</th>
+												<th>Vận Chuyển</th>
+												<th>Tổng</th>
+												<th>Trạng Thái</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="itemPending in pagerPending.itemsPending"
+												ng-click="edit(itemPending)">
+												<td>{{itemPending.id}}</td>
+												<td>{{itemPending.accounts.username}}</td>
+												<td class="text-info">{{itemPending.create_date | date:
+													'dd/MM/yyyy'}}</td>
+												<td>{{itemPending.ship_pay}}</td>
+												<td>{{itemPending.ship_delivery}}</td>
+												<td class="text-info">{{itemPending.total|number:0}}
+													VNĐ</td>
+												<td><label class="badge badge-warning">Chưa Xác
+														Nhận</label></td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="text-center mt-2">
+										<button ng-click="pagerPending.first()"
+											class="btn btn-secondary"><<</button>
+										<button ng-click="pagerPending.pre()"
+											class="btn btn-secondary"><</button>
+										<button class="btn btn-warning">{{pagerPending.page +
+											1}} of {{pagerPending.count}}</button>
+										<button ng-click="pagerPending.next()"
+											class="btn btn-secondary">></button>
+										<button ng-click="pagerPending.last()"
+											class="btn btn-secondary">>></button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="Confirmed" role="tabpanel"
+						aria-labelledby="Confirmed-tab">
+						<div class="card">
+							<div class="card-body">
+									<h1 class="card-title" style="font-family: sans-serif; font-weight: bold;"># ĐÃ XÁC NHẬN</h1>
+								<div class="table-responsive">
+									<table class="table table-hover" style="cursor: pointer;">
+										<thead>
+											<tr>
+												<th>ID</th>
+												<th>Tài Khoản</th>
+												<th>Ngày Mua</th>
+												<th>Thanh Toán</th>
+												<th>Vận Chuyển</th>
+												<th>Tổng</th>
+												<th>Trạng Thái</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="itemConfirm in pagerConfirm.itemsConfirm"
+												ng-click="edit(itemConfirm)">
+												<td>{{itemConfirm.id}}</td>
+												<td>{{itemConfirm.accounts.username}}</td>
+												<td class="text-info">{{itemConfirm.create_date | date:
+													'dd/MM/yyyy'}}</td>
+												<td>{{itemConfirm.ship_pay}}</td>
+												<td>{{itemConfirm.ship_delivery}}</td>
+												<td class="text-info">{{itemConfirm.total|number:0}} VNĐ</td>
+												<td><label class="badge badge-info">Đã Xác Nhận</label>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="text-center mt-2">
+										<button ng-click="pagerConfirm.first()"
+											class="btn btn-secondary"><<</button>
+										<button ng-click="pagerConfirm.pre()"
+											class="btn btn-secondary"><</button>
+										<button class="btn btn-info">{{pagerConfirm.page +
+											1}} of {{pagerConfirm.count}}</button>
+										<button ng-click="pagerConfirm.next()"
+											class="btn btn-secondary">></button>
+										<button ng-click="pagerConfirm.last()"
+											class="btn btn-secondary">>></button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="Delivery" role="tabpanel"
+						aria-labelledby="Delivery-tab">
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-6">
+											<h1 class="card-title" style="font-family: sans-serif; font-weight: bold;"># ĐANG GIAO HÀNG</h1>
+									</div>
+									<div class="col-6"></div>
+								</div>
+								<div class="table-responsive">
+									<table class="table table-hover" style="cursor: pointer;">
+										<thead>
+											<tr>
+												<th>ID</th>
+												<th>Tài Khoản</th>
+												<th>Ngày Mua</th>
+												<th>Thanh Toán</th>
+												<th>Vận Chuyển</th>
+												<th>Tổng</th>
+												<th>Trạng Thái</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="itemDelivery in pagerDelivery.itemsDelivery"
+												ng-click="edit(itemDelivery)">
+												<td>{{itemDelivery.id}}</td>
+												<td>{{itemDelivery.accounts.username}}</td>
+												<td class="text-info">{{itemDelivery.create_date |
+													date: 'dd/MM/yyyy'}}</td>
+												<td>{{itemDelivery.ship_pay}}</td>
+												<td>{{itemDelivery.ship_delivery}}</td>
+												<td class="text-info">{{itemDelivery.total|number:0}}
+													VNĐ</td>
+												<td><label class="badge badge-primary">Đang
+														Giao Hàng</label></td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="text-center mt-2">
+										<button ng-click="pagerDelivery.first()"
+											class="btn btn-secondary"><<</button>
+										<button ng-click="pagerDelivery.pre()"
+											class="btn btn-secondary"><</button>
+										<button class="btn btn-primary">{{pagerDelivery.page
+											+ 1}} of {{pagerDelivery.count}}</button>
+										<button ng-click="pagerDelivery.next()"
+											class="btn btn-secondary">></button>
+										<button ng-click="pagerDelivery.last()"
+											class="btn btn-secondary">>></button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="Complete" role="tabpanel"
+						aria-labelledby="Complete-tab">
+						<div class="card">
+							<div class="card-body">
+									<h1 class="card-title" style="font-family: sans-serif; font-weight: bold;"># ĐÃ GIAO HÀNG</h1>
+								<div class="table-responsive">
+									<table class="table table-hover" style="cursor: pointer;">
+										<thead>
+											<tr>
+												<th>ID</th>
+												<th>Tài Khoản</th>
+												<th>Ngày Mua</th>
+												<th>Thanh Toán</th>
+												<th>Vận Chuyển</th>
+												<th>Tổng</th>
+												<th>Trạng Thái</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="itemComplete in pagerComplete.itemsComplete"
+												ng-click="edit(itemComplete)">
+												<td>{{itemComplete.id}}</td>
+												<td>{{itemComplete.accounts.username}}</td>
+												<td class="text-info">{{itemComplete.create_date |
+													date: 'dd/MM/yyyy'}}</td>
+												<td>{{itemComplete.ship_pay}}</td>
+												<td>{{itemComplete.ship_delivery}}</td>
+												<td class="text-info">{{itemComplete.total|number:0}}
+													VNĐ</td>
+												<td><label class="badge badge-success">Đã Giao
+														Hàng</label></td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="text-center mt-2">
+										<button ng-click="pagerComplete.first()"
+											class="btn btn-secondary">|<</button>
+										<button ng-click="pagerComplete.pre()"
+											class="btn btn-secondary"><<</button>
+										<button class="btn btn-success">{{pagerComplete.page
+											+ 1}} of {{pagerComplete.count}}</button>
+										<button ng-click="pagerComplete.next()"
+											class="btn btn-secondary">>></button>
+										<button ng-click="pagerComplete.last()"
+											class="btn btn-secondary">>|</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="Cancel" role="tabpanel"
+						aria-labelledby="Cancel-tab">
+						<div class="card">
+							<div class="card-body">
+									<h1 class="card-title" style="font-family: sans-serif; font-weight: bold;"># HỦY ĐƠN</h1>
+								<div class="table-responsive">
+									<table class="table table-hover" style="cursor: pointer;">
+										<thead>
+											<tr>
+												<th>ID</th>
+												<th>Tài Khoản</th>
+												<th>Ngày Mua</th>
+												<th>Thanh Toán</th>
+												<th>Vận Chuyển</th>
+												<th>Tổng</th>
+												<th>Trạng Thái</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="itemCancel in pagerCancel.itemsCancel"
+												ng-click="edit(itemCancel)">
+												<td>{{itemCancel.id}}</td>
+												<td>{{itemCancel.accounts.username}}</td>
+												<td class="text-info">{{itemCancel.create_date | date:
+													'dd/MM/yyyy'}}</td>
+												<td>{{itemCancel.ship_pay}}</td>
+												<td>{{itemCancel.ship_delivery}}</td>
+												<td class="text-info">{{itemCancel.total|number:0}} VNĐ</td>
+												<td><label class="badge badge-danger">Hủy Đơn</label></td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="text-center mt-2">
+										<button ng-click="pagerCancel.first()"
+											class="btn btn-secondary"><<</button>
+										<button ng-click="pagerCancel.pre()" class="btn btn-secondary"><</button>
+										<button class="btn btn-danger">{{pagerCancel.page +
+											1}} of {{pagerCancel.count}}</button>
+										<button ng-click="pagerCancel.next()"
+											class="btn btn-secondary">></button>
+										<button ng-click="pagerCancel.last()"
+											class="btn btn-secondary">>></button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-12">
+		<div ng-show="getOrderStatus == ''">
+			<div class="container px-1 px-md-4 py-5 mx-auto">
+				<div class="card1">
+					<!-- Add class 'active' to progress -->
+					<div class="row d-flex justify-content-center">
+						<div class="col-12">
+							<ul id="progressbar" class="text-center">
+								<li class="active step0"></li>
+								<li class="active step0"></li>
+								<li class="active step0"></li>
+								<li class="active step0"></li>
+							</ul>
+						</div>
+					</div>
+					<div class="row justify-content-between top">
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/9nnc9Et.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Pending
+								</p>
+							</div>
+						</div>
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/u1AzR7w.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Confirm
+								</p>
+							</div>
+						</div>
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/TkPm63y.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Delivery
+								</p>
+							</div>
+						</div>
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/HdsziHP.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Complete
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div ng-show="getOrderStatus == 'Pending'">
+			<div class="container px-1 px-md-4 py-5 mx-auto">
+				<div class="card1">
+					<!-- Add class 'active' to progress -->
+					<div class="row d-flex justify-content-center">
+						<div class="col-12">
+							<ul id="progressbar" class="text-center">
+								<li class="active step0"></li>
+								<li class="step0"></li>
+								<li class="step0"></li>
+								<li class="step0"></li>
+							</ul>
+						</div>
+					</div>
+					<div class="row justify-content-between top">
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/9nnc9Et.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Pending
+								</p>
+							</div>
+						</div>
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/u1AzR7w.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Confirm
+								</p>
+							</div>
+						</div>
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/TkPm63y.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Delivery
+								</p>
+							</div>
+						</div>
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/HdsziHP.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Complete
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-6 text-center">
+						<button
+							style="width: 300px; height: 70px; font-family: sans-serif; font-size: 20px; text-transform: uppercase;"
+							class="btn btn-danger text-center" ng-click="cancel()">Hủy
+							Đơn</button>
+					</div>
+					<div class="col-6 text-center">
+						<button
+							style="width: 300px; height: 70px; font-family: sans-serif; font-size: 20px; text-transform: uppercase;"
+							class="btn btn-warning text-center" ng-click="confirm()">Xác
+							Nhận Đơn Hàng</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div ng-show="getOrderStatus == 'Confirm'">
+			<div class="container px-1 px-md-4 py-5 mx-auto">
+				<div class="card1">
+					<!-- Add class 'active' to progress -->
+					<div class="row d-flex justify-content-center">
+						<div class="col-12">
+							<ul id="progressbar" class="text-center">
+								<li class="active step0"></li>
+								<li class="active step0"></li>
+								<li class="step0"></li>
+								<li class="step0"></li>
+							</ul>
+						</div>
+					</div>
+					<div class="row justify-content-between top">
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/9nnc9Et.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Pending
+								</p>
+							</div>
+						</div>
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/u1AzR7w.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Confirm
+								</p>
+							</div>
+						</div>
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/TkPm63y.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Delivery
+								</p>
+							</div>
+						</div>
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/HdsziHP.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Complete
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-6 text-center">
+						<button
+							style="width: 300px; height: 70px; font-family: sans-serif; font-size: 20px; text-transform: uppercase;"
+							class="btn btn-danger text-center" ng-click="cancel()">Hủy
+							Đơn</button>
+					</div>
+					<div class="col-6 text-center">
+						<button
+							style="width: 300px; height: 70px; font-family: sans-serif; font-size: 20px; text-transform: uppercase;"
+							class="btn btn-info text-center" ng-click="delivery()">Xác
+							Nhận Giao Hàng</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div ng-show="getOrderStatus == 'Delivery'">
+			<div class="container px-1 px-md-4 py-5 mx-auto">
+				<div class="card1">
+					<!-- Add class 'active' to progress -->
+					<div class="row d-flex justify-content-center">
+						<div class="col-12">
+							<ul id="progressbar" class="text-center">
+								<li class="active step0"></li>
+								<li class="active step0"></li>
+								<li class="active step0"></li>
+								<li class="step0"></li>
+							</ul>
+						</div>
+					</div>
+					<div class="row justify-content-between top">
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/9nnc9Et.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Pending
+								</p>
+							</div>
+						</div>
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/u1AzR7w.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Confirm
+								</p>
+							</div>
+						</div>
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/TkPm63y.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Delivery
+								</p>
+							</div>
+						</div>
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/HdsziHP.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Complete
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-6 text-center">
+						<button
+							style="width: 300px; height: 70px; font-family: sans-serif; font-size: 20px; text-transform: uppercase;"
+							class="btn btn-danger text-center" ng-click="cancel()">Hủy
+							Đơn</button>
+					</div>
+					<div class="col-6 text-center">
+						<button
+							style="width: 300px; height: 70px; font-family: sans-serif; font-size: 20px; text-transform: uppercase;"
+							class="btn btn-primary text-center" ng-click="complete()">Xác
+							Nhận Đã Giao Hàng</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div ng-show="getOrderStatus == 'Complete'">
+			<div class="container px-1 px-md-4 py-5 mx-auto">
+				<div class="card1">
+					<!-- Add class 'active' to progress -->
+					<div class="row d-flex justify-content-center">
+						<div class="col-12">
+							<ul id="progressbar" class="text-center">
+								<li class="active step0"></li>
+								<li class="active step0"></li>
+								<li class="active step0"></li>
+								<li class="active step0"></li>
+							</ul>
+						</div>
+					</div>
+					<div class="row justify-content-between top">
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/9nnc9Et.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Pending
+								</p>
+							</div>
+						</div>
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/u1AzR7w.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Confirm
+								</p>
+							</div>
+						</div>
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/TkPm63y.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Delivery
+								</p>
+							</div>
+						</div>
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/HdsziHP.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Complete
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div ng-show="getOrderStatus == 'Cancel'">
+			<div class="container px-1 px-md-4 py-5 mx-auto">
+				<div class="card1">
+					<!-- Add class 'active' to progress -->
+					<div class="row d-flex justify-content-center">
+						<div class="col-12">
+							<ul id="progressbar" class="text-center">
+								<li class="step0"></li>
+								<li class="step0"></li>
+								<li class="step0"></li>
+								<li class="step0"></li>
+							</ul>
+						</div>
+					</div>
+					<div class="row justify-content-between top">
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/9nnc9Et.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Pending
+								</p>
+							</div>
+						</div>
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/u1AzR7w.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Confirm
+								</p>
+							</div>
+						</div>
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/TkPm63y.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Delivery
+								</p>
+							</div>
+						</div>
+						<div class="row d-flex icon-content">
+							<img class="icon" src="https://i.imgur.com/HdsziHP.png">
+							<div class="d-flex flex-column">
+								<p class="font-weight-bold">
+									Order<br>Complete
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- ----- PRODUCT LIST ----- -->
+	<div class="col-12 p-0">
+		<div class="card col-12 p-0">
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-hover">
+						<thead>
+							<tr class="text-center">
+								<th>Hình</th>
+								<th>Tên Sản Phẩm</th>
+								<th>Dung Lượng</th>
+								<th>Màu Sắc</th>
+								<th>Giá Thành</th>
+								<th>Số Lượng</th>
+								<th>Tổng Giá</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in formDetail" class="text-center">
+
+								<td><img alt="{{item.products.image}}"
+									style="width: 80px; height: 80px; border-radius: 0px;"
+									src="/images/{{item.products.image}}"></td>
+
+								<td>{{item.products.name}}</td>
+								<td>{{item.ram}}</td>
+								<td>{{item.color}}</td>
+								<td>{{item.price|number:0}} VNĐ</td>
+								<td>{{item.quantity}}</td>
+								<td>{{item.price * item.quantity|number:0}} VNĐ</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ----- END PRODUCT LIST ----- -->
+<style>
+.table thead tr th {
+font-family: sans-serif; font-weight: bold;
+}
+</style>
+</div>

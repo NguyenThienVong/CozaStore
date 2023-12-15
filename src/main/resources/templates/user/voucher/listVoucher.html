@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout :: areas(~{::title},~{::body})}">
+<head>
+<meta charset="UTF-8">
+<title>Coza Store | Vouchers</title>
+</head>
+<body>
+	<section class="bg-img1 txt-center p-lr-15 p-tb-40"></section>
+	<section class="section-slide container">
+		<div class="wrap-slick1">
+			<div class="slick1">
+				<div class="item-slick1"
+					style="background-image: url(https://down-vn.img.susercontent.com/file/vn-50009109-72c97487e3448ed573d4604a61f81e46); border-radius: 15px;">
+				</div>
+				<div class="item-slick1"
+					style="background-image: url(https://down-vn.img.susercontent.com/file/vn-50009109-72c97487e3448ed573d4604a61f81e46); border-radius: 15px;">
+				</div>
+			</div>
+		</div>
+	</section>
+	<br>
+	<div class="sec-banner bg0 p-t-80 p-b-50">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
+					<!-- Block1 -->
+					<div class="block1 wrap-pic-w">
+						<img src="https://shopdunk.com/images/uploaded/BONUSt7.png"
+							alt="IMG-BANNER"> <a
+							th:href="@{|/home/product/list?cid=5|}"
+							class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+							<div class="block1-txt-child1 flex-col-l"></div>
+							<div class="block1-txt-child2 p-b-4 trans-05">
+								<div class="block1-link stext-101 cl0 trans-09">Shop Now</div>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
+					<!-- Block1 -->
+					<div class="block1 wrap-pic-w">
+						<img
+							src="https://shopdunk.com/images/uploaded/Bonus%20banner-26.png"
+							alt="IMG-BANNER"> <a th:href="@{/home/product/list}"
+							class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+							<div class="block1-txt-child1 flex-col-l"></div>
+							<div class="block1-txt-child2 p-b-4 trans-05">
+								<div class="block1-link stext-101 cl0 trans-09">Shop Now</div>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
+					<!-- Block1 -->
+					<div class="block1 wrap-pic-w">
+						<img
+							src="https://shopdunk.com/images/uploaded/banner/bonus%20banner/387x166%201.png"
+							alt="IMG-BANNER"> <a href="/home/contact"
+							class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+							<div class="block1-txt-child1 flex-col-l"></div>
+							<div class="block1-txt-child2 p-b-4 trans-05">
+								<div class="block1-link stext-101 cl0 trans-09">Shop Now</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container mb-5">
+		<div class="row ml-5">
+			<div class="col-5 card m-4" style="max-width: 100%; height: 265px;"
+				th:each="v: ${vouchers}">
+				<div class="row no-gutters">
+					<div class="col-md-4 mt-4">
+						<img class="img-fluid" alt="Hình Ảnh"
+							src="https://down-vn.img.susercontent.com/file/sg-11134004-7qvcu-lewmsss6on7ada">
+					</div>
+					<div class="col-md-8 text-left">
+						<div class="card-body" style="font-family: sans-serif;">
+							<h3 class="mb-2" style="font-weight: bold;">[[${v.id}]]</h3>
+							<h4 class="mb-2" style="font-weight: bold;">Giảm
+								[[${#numbers.formatDecimal(v.price, 0, 'POINT', 0, 'POINT')}]]
+								VNĐ</h4>
+							<p class="card-text">Có hiệu lực từ [[${v.start_date}]]</p>
+							<p class="card-text">Số lượng : [[${v.quantity}]]</p>
+							<p class="card-text">Hết hạn vào [[${v.end_date}]]</p>
+							<p>
+								<small class="text-muted">[[${v.decribe}]]</small>
+							</p>
+						</div>
+						<div class="d-flex justify-content-end">
+							<a class="btn" th:href="@{|/home/vouchers/add/${v.id}|}"
+								style="background-color: rgb(238, 77, 45);
+								color: rgb(255, 255, 255);
+								padding: 10px; font-size: 24px;
+								line-height: 28px; text-align: center;
+								cursor: pointer;
+								border-radius: 15px;
+								width: 100px;
+								font-family: sans-serif;"
+								ng-click="executeScript()">Lưu</a>
+						</div>
+						<script>
+						  function executeScript() {
+						         Swal.fire({
+						            icon: 'success',
+						            title: 'Add vouchers success !',
+						            showConfirmButton: false,
+						            timer: 2000
+						        });
+						        setTimeout(function() {
+						            // Get the URL from th:href attribute
+						            var url = document.querySelector('.btn').getAttribute('th:href');					            
+						            // Redirect to the specified URL
+						            window.location.href = url;
+						        }, 2000); // 5000 milliseconds = 5 seconds
+						    }
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

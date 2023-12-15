@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout :: areas(~{::title},~{::body})}">
+<head>
+<meta charset="UTF-8">
+<title>Coza Store | My Order</title>
+</head>
+<body>
+	<!-- Title page -->
+	<section class="bg-img1 txt-center p-lr-15 p-tb-40"></section>
+	<!-- Title page -->
+
+	<section class="bg0 p-b-116">
+
+		<div class="flex-tr"
+			style="-webkit-flex-wrap: wrap; -moz-flex-wrap: wrap; -ms-flex-wrap: wrap; -o-flex-wrap: wrap; flex-wrap: wrap; margin-left: 10%;">
+			<div class="bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md"
+				style="width: 90%;">
+				<h2 class="mtext-105 cl2 txt-center p-b-30"
+					style="font-weight: bold;">ĐƠN HÀNG CỦA TÔI</h2>
+				<br>				
+				<table class="table table-striped table-hover">
+  					<thead class="thead-dark">
+  					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Username</th>
+						<th scope="col">Điện Thoại</th>	
+						<th scope="col">Ngày Mua</th>
+						<th scope="col">Đơn Vị Giao Hàng</th>
+						<th scope="col">Tổng</th>	
+						<th scope="col">Thanh Toán</th>						
+						<th scope="col" class="text-center">Trạng Thái Đơn Hàng</th>	
+						<th scope="col">Xem</th>				
+					</tr>
+					 </thead>
+					  <tbody>
+					<tr th:each="order : ${orders}">
+						<th th:text="${order.id}"></th>
+						<th th:text="${order.accounts.username}"></th>
+						<th th:text="${order.ship_phone == '' ? order.account_address.phone : order.ship_phone}"></th>												
+						<th th:text="${#dates.format(order.create_date, 'dd-MM-yyyy')}"></th>
+						<th th:text="${order.ship_delivery}"></th>
+						<th>[[${#numbers.formatDecimal(order.total, 0, 'COMMA', 0, 'POINT')}]] VNĐ</th>		
+						<th th:text="${order.ship_pay}"></th>		
+						<th class="text-center"
+						th:style="${order.order_status.id == 'Pending' ? 'color: #FDD36A;' 
+						: (order.order_status.id == 'Delivery' ? 'color: #39A7FF	;' 
+						: (order.order_status.id == 'Confirm' ? 'color: #29ADB2;' 
+						: (order.order_status.id == 'Complete' ? 'color: #54B435;' 
+						: (order.order_status.id == 'Cancel' ? 'color: #BE3144;' : ''))))}">[[${order.order_status.id}]]</th>
+						<th><a th:href="@{|/order/detail/${order.id}|}" class="text-dark">
+							<iconify-icon icon="cil:zoom" width="25" height="25"></iconify-icon>
+						</a>
+						</th>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+
+
+</body>
+</html>

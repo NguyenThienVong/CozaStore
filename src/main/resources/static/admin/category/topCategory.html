@@ -1,0 +1,44 @@
+
+<style>
+/* CSS để tạo "box" xung quanh từng hàng trong bảng */
+table {
+	width: 100%;
+	border-collapse: collapse;
+	background-color: rgba(75, 192, 192, 0.2);
+}
+
+th, td {
+	padding: 10px;
+	/* Điều chỉnh khoảng cách giữa nội dung và đường viền của ô */
+	border: 1px solid #ddd; /* Đường viền của ô */
+}
+
+/* CSS để làm đẹp cột tổng số */
+th, td.text-info {
+	text-align: center;
+}
+</style>
+
+<div class="col-md-12 mt-5">
+	<table class="table table-hover">
+		<thead style="text-transform: uppercase; text-align: center;">
+			<tr>
+				<th>No.</th>
+				<th>Name</th>
+				<th>Purchases</th>
+				<th>Revenue</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in tops" style="text-align: center;">
+				<td>{{$index+1}}</td>
+				<td>{{item.categories.name}}</td>
+				<td>{{item.count}}</td>
+				<td class="text-info">{{item.sum|number:0}} VNĐ</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="col-md-10 mt-5 offset-1">
+		<canvas id="myChart" width="400" height="200"></canvas>
+	</div>
+</div>

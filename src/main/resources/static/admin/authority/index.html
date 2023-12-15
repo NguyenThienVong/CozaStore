@@ -1,0 +1,26 @@
+<div class="row mt-5">
+	<div class="col-8 offset-2">
+	<table class="table table-striped border">
+		<thead class="bg-info" style="text-transform: uppercase; text-align: center;">
+			<tr>
+				<th>Avata</th>
+				<th>Username</th>
+				<th>Email</th>
+				<th ng-repeat="role in roles" class="text-center">{{role.name}}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in admins" style="text-align: center;">
+				<th>
+					<img alt="{{item.photo}}" style="width: 50px; height: 50px" src="/images/{{item.photo}}">
+				</th>
+				<th>{{item.username}}</th>
+				<td>{{item.email}}</td>
+				<th ng-repeat="role in roles" class="text-center">
+					<input type="checkbox" ng-checked="authority_of(item,role)" ng-click="authority_changed(item,role)">
+				</th>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+</div>

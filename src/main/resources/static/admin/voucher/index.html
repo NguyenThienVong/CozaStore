@@ -1,0 +1,84 @@
+<div class="row mt-5">
+	<div class="row col-md-12">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-7">
+			<div class="row panel">
+				<div class="form-group col-sm-8">
+					<div class="panel-footer">
+						<label>Code</label> <input ng-model="form.id" class="form-control">
+						<br> <label>Price</label> <input ng-model="form.price"
+							class="form-control"> <br> <label>Describe</label>
+						<textarea ng-model="form.decribe" class="form-control" rows="5"></textarea>
+						<br>
+						<div class="row">
+							<div class="col-2">
+								<label>Quantity</label> <input ng-model="form.quantity"
+									type="number" class="form-control" min="1">
+							</div>
+							<div class="col-5">
+								<label>Start Date</label> <input ng-model="form.start_date"
+									type="date" class="form-control">
+							</div>
+							<div class="col-5">
+								<label>End Date</label> <input ng-model="form.end_date"
+									type="date" class="form-control">
+							</div>
+						</div>
+					</div>
+					<br> <br>
+
+					<div class="panel-footer text-center">
+						<button ng-click="create()" class="btn btn-info">
+							<i class="glyphicon glyphicon-plus"></i> Create
+						</button>
+						<button ng-click="update()" class="btn btn-info">
+							<i class="glyphicon glyphicon-save"></i> Update
+						</button>
+						<button ng-click="delete(form)" class="btn btn-info">
+							<i class="glyphicon glyphicon-trash"></i> Delete
+						</button>
+						<button ng-click="reset()" class="btn btn-info">
+							<i class="glyphicon glyphicon-refresh"></i> New
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-8 offset-2 mt-2">
+		<table class="table table-striped border">
+			<thead class="bg-info"
+				style="color: dark; text-transform: uppercase; text-align: center;">
+				<tr>
+					<th>Code</th>
+					<th>Sale</th>
+					<th>Quantity</th>
+					<th>Start Date</th>
+					<th>End Date</th>
+					<th>Describe</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in vous" style="text-align: center;">
+					<th>{{item.id}}</th>
+					<td>{{item.price}}</td>
+					<td>{{item.quantity}}</td>
+					<td>{{item.start_date | date : 'dd-MM-yyyy'}}</td>
+					<td>{{item.end_date | date : 'dd-MM-yyyy'}}</td>
+					<td>{{item.decribe}}</td>
+					<td>
+						<div class="btn-group btn-group-xs">
+							<button ng-click="edit(item)" class="btn btn-success mr-3">
+								<span class="glyphicon glyphicon-edit">Edit</span>
+							</button>
+							<button ng-click="delete(item)" class="btn btn-danger">
+								<span class="glyphicon glyphicon-remove">Del</span>
+							</button>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout :: areas(~{::title},~{::body})}">
+<head>
+
+<title>[[#{title.home}]]</title>
+
+</head>
+<body>
+	<!-- Modal Sales -->
+	<div class="modal fade bd-example-modal-lg" id="myModal">
+		<!-- Title page -->
+		<section class="bg-img1 txt-center p-lr-15 p-tb-80"></section>
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<img alt=""
+					src="https://www.mdtech.news/u/fotografias/m/2022/11/22/f1280x720-11970_143645_3265.jpg">
+			</div>
+		</div>
+	</div>
+	<script>
+		$(window).on('load', function() {
+			$('#myModal').modal('show');
+		});
+	</script>
+
+	<!-- Slider -->
+	<section class="section-slide">
+		<div class="wrap-slick1">
+			<div class="slick1">
+				<div class="item-slick1"
+					style="background-image: url(https://shopdunk.com/images/uploaded/banner/thang%209%202023/banner%20iphone%2015-2_PC.jpg);">
+				</div>
+				<div class="item-slick1"
+					style="background-image: url(https://shopdunk.com/images/uploaded/banner/thang%209%202023/banner%20iphone%2014%20Pro%20Max%20T9_Banner%20PC.jpg);">
+				</div>
+				<div class="item-slick1"
+					style="background-image: url(https://shopdunk.com/images/uploaded/banner/thang%209%202023/banner%20watch%20T9_Banner%20PC.jpg);">
+				</div>
+				<div class="item-slick1"
+					style="background-image: url(https://shopdunk.com/images/uploaded/banner/banner_thang10/banner%20iphone%2014%20Pro%20Max%20T10_Banner%20PC.jpg);">
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- Banner -->
+	<br>
+	<br>
+	<div class="sec-banner bg0 p-t-80 p-b-50">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
+					<!-- Block1 -->
+					<div class="block1 wrap-pic-w">
+						<img src="https://shopdunk.com/images/uploaded/BONUSt7.png"
+							alt="IMG-BANNER"> <a
+							th:href="@{|/home/product/list?cid=5|}"
+							class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+							<div class="block1-txt-child1 flex-col-l"></div>
+							<div class="block1-txt-child2 p-b-4 trans-05">
+								<div class="block1-link stext-101 cl0 trans-09">[[#{banner.shopnow}]]</div>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
+					<!-- Block1 -->
+					<div class="block1 wrap-pic-w">
+						<img
+							src="https://shopdunk.com/images/uploaded/Bonus%20banner-26.png"
+							alt="IMG-BANNER"> <a th:href="@{/home/product/list}"
+							class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+							<div class="block1-txt-child1 flex-col-l"></div>
+							<div class="block1-txt-child2 p-b-4 trans-05">
+								<div class="block1-link stext-101 cl0 trans-09">[[#{banner.shopnow}]]</div>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
+					<!-- Block1 -->
+					<div class="block1 wrap-pic-w">
+						<img
+							src="https://shopdunk.com/images/uploaded/banner/bonus%20banner/387x166%201.png"
+							alt="IMG-BANNER"> <a href="/home/contact"
+							class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+							<div class="block1-txt-child1 flex-col-l"></div>
+							<div class="block1-txt-child2 p-b-4 trans-05">
+								<div class="block1-link stext-101 cl0 trans-09">[[#{banner.shopnow}]]</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Home Start -->
+	
+	<div class="container">
+	<section class="sec-relate-product bg0 p-t-45 p-b-105">
+		<div class="container">
+			<div class="row">
+				<div class="p-b-45 col-2"></div>
+				<div class="p-b-45 col-6"
+					style="height:245px;
+							color: white;
+							background-size:cover;
+							background-image: url('/images/black.png');
+							border-radius: 15px;"></div>
+				<div class="p-b-45 col-2 ml-5"
+					style="background-image: url('/images/friday.png');
+							background-size:cover;
+							border-radius: 15px;">
+							<div class="text-center mt-1" style="font-size: 19px;">TIME OUT</div>
+					<h3 class="ltext-106 cl5 txt-center text-light mt-5" style="font-weight: bold; text-shadow: 20px -10px 26px #ffffff;">
+						<div id="countdown">00:00:00</div>
+					</h3>
+				</div>
+			</div>
+			<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<script>
+	
+  function startCountdown(startTime, endTime) {
+	  
+    var startDate = new Date(startTime).getTime();
+    var endDate = new Date(endTime).getTime();
+    
+    var x = setInterval(function() {   
+    	
+      var now = new Date().getTime();
+
+      if (now >= startDate) {
+        var distance = endDate - now;
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('countdown').innerHTML = ' <iconify-icon icon="icon-park-outline:time" width="28" height="28"></iconify-icon> ' + days + 'd ' + hours + 'd ' + minutes + 'm ' + seconds + 's';
+
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById('countdown').innerHTML = 'TIME OUT On Sale !';
+        }
+      } else {
+    	  var timeUntilStart = startDate - now;
+		
+    	  var daysUntilStart = Math.floor(timeUntilStart / (1000 * 60 * 60 * 24));
+          var hoursUntilStart = Math.floor((timeUntilStart % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutesUntilStart = Math.floor((timeUntilStart % (1000 * 60 * 60)) / (1000 * 60));
+          var secondsUntilStart = Math.floor((timeUntilStart % (1000 * 60)) / 1000);
+
+          document.getElementById('countdown').innerHTML = 'OPEN SALE ' + daysUntilStart + ' d ' + hoursUntilStart + ' h ' + minutesUntilStart + 'm ' + secondsUntilStart + 's';
+      }
+    }, 1000);
+   
+  }
+
+  var startTimeFromStorage = localStorage.getItem('startTime');
+  console.log(startTimeFromStorage);
+  var endTimeFromStorage = localStorage.getItem('endTime');
+  console.log(endTimeFromStorage);
+  
+
+  if (startTimeFromStorage && endTimeFromStorage) {
+    startCountdown(startTimeFromStorage, endTimeFromStorage);
+  } else {
+    console.log('Thời gian không hợp lệ trong Local Storage');
+  }
+</script>
+
+
+		
+			<div class="wrap-slick2" id="quandz" style="display: none;">							
+				<div class="slick2">
+					<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15" th:each="s: ${onSale}">
+						<!-- Block2 -->
+						<div class="block2">
+							<div class="block2-pic hov-img0">
+								<img alt="IMG-PRODUCT" th:src="@{|/images/${s.image}|}">																	
+								<a th:attr="ng-click=@{|cart.add(${s.id})|}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+									[[#{cart.gh}]]
+								</a>
+							</div>
+
+							<div class="block2-txt flex-w flex-t p-t-14">
+								<div class="block2-txt-child1 flex-col-l ">
+								<div class="card-name">
+									<h5>
+										<a class="js-name-b2"
+											 th:href="@{|/home/product/detail/${s.id}|}"
+												th:attr="ng-click=@{|viewed.add(${s.id})|}"
+													 th:utext="${s.name}">
+										</a>
+									</h5>
+								</div>
+									<div style="color: #FA7070; font-weight: bolder;margin-top:5px; font-size: 21px; font-family: sans-serif;">
+										<span th:utext="${#numbers.formatDecimal(s.price*(100-s.sale)/100, 0, 'POINT', 0, 'POINT')}"></span> ₫
+									</div>	
+									<div style="color: #161A30; font-weight: bolder; margin-top:5px; text-decoration: line-through;">
+										<span th:utext="${#numbers.formatDecimal(s.price, 0, 'POINT', 0, 'POINT')}"></span> ₫
+									</div>									
+								</div>
+
+								<div class="block2-txt-child2 flex-r p-t-3">
+									<a th:attr="ng-click=@{|favorite.add(${s.id})|}" class="btn-addwish-b2 dis-block pos-relative">
+										<img class="icon-heart1 trans-04" src="/user/images/icons/icon-heart-01.png" alt="ICON">
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>		
+		</div>
+	</section>
+	</div>
+
+	<!-- iPhone Start -->
+	<section class="sec-product bg0 p-t-30 p-b-30">
+
+		<div class="container">
+			<div class="p-b-22">
+				<h3 class="ltext-102 cl5 txt-center respon1">iPhone</h3>
+			</div>
+
+			<!--Tab01-->
+			<div class="tab01">
+				<!--Nav tabs-->
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="nav-item p-b-10"><a class="nav-link active"
+						data-toggle="tab" href="#best-seller" role="tab">[[#{tab01.newproducts}]]</a></li>
+
+					<li class="nav-item p-b-10"><a class="nav-link"
+						data-toggle="tab" href="#featured" role="tab">[[#{tab01.Price-Decreases}]]</a></li>
+
+					<li class="nav-item p-b-10"><a class="nav-link"
+						data-toggle="tab" href="#sale" role="tab">[[#{tab01.Price-Increases-Gradually}]]</a></li>
+				</ul>
+
+				<!--Tab panes-->
+				<div class="tab-content p-t-20">
+					<!-- iPhone-New -->
+					<div class="tab-pane fade show active" id="best-seller"
+						role="tabpanel">
+						<div class="container-fluid">
+							<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3 p-b-30 isotope-item women" th:each="p: ${items1a}">
+					<!-- Block2 -->					
+					<div class="block2">					
+						<div class="block2-pic hov-img0">
+							<img alt="IMG-PRODUCT" th:src="@{|/images/${p.image}|}">																	
+							<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								[[#{cart.gh}]]
+							</a>
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">							
+								<div class="card-name">
+									<h5>
+										<a class="js-name-b2"
+											 th:href="@{|/home/product/detail/${p.id}|}"
+												th:attr="ng-click=@{|viewed.add(${p.id})|}"
+													 th:utext="${p.name}">
+										</a>
+									</h5>
+								</div>
+								<div style="color: #0066CC; font-weight: bolder; margin: 5px; font-size: 17px;">
+									<span th:utext="${#numbers.formatDecimal(p.price*(100-p.sale)/100, 0, 'POINT', 0, 'POINT')}"></span> ₫
+								</div>								
+							</div>
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a th:attr="ng-click=@{|favorite.add(${p.id})|}"
+									class="btn-addwish-b2 dis-blockpos-relative"> <img
+									class="dis-block trans-04"
+									src="/user/images/icons/icon-heart-01.png" alt="ICON">
+								</a>
+							</div>
+						</div>					
+					</div>
+				</div>			
+			</div>
+						</div>
+					</div>
+
+					<!-- iPhone-Desc -->
+					<div class="tab-pane fade" id="featured" role="tabpanel">
+						<!-- Slide2 -->
+						<div class="container-fluid">
+							<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3 p-b-30 isotope-item women" th:each="p: ${items1b}">
+					<!-- Block2 -->					
+					<div class="block2">					
+						<div class="block2-pic hov-img0">
+							<img alt="IMG-PRODUCT" th:src="@{|/images/${p.image}|}">																	
+							<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								[[#{cart.gh}]]
+							</a>
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">							
+								<div class="card-name">
+									<h5>
+										<a class="js-name-b2"
+											 th:href="@{|/home/product/detail/${p.id}|}"
+												th:attr="ng-click=@{|viewed.add(${p.id})|}"
+													 th:utext="${p.name}">
+										</a>
+									</h5>
+								</div>
+								<div style="color: #0066CC; font-weight: bolder; margin: 5px; font-size: 17px;">
+									<span th:utext="${#numbers.formatDecimal(p.price*(100-p.sale)/100, 0, 'POINT', 0, 'POINT')}"></span> ₫
+								</div>									
+							</div>
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a th:attr="ng-click=@{|favorite.add(${p.id})|}"
+									class="btn-addwish-b2 dis-blockpos-relative"> <img
+									class="dis-block trans-04"
+									src="/user/images/icons/icon-heart-01.png" alt="ICON">
+								</a>
+							</div>
+						</div>					
+					</div>
+				</div>			
+			</div>
+						</div>
+					</div>
+
+
+
+					<!-- iPhone-Sales -->
+					<div class="tab-pane fade" id="sale" role="tabpanel">
+						<!--Slide3-->
+						<div class="container-fluid">
+							<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3 p-b-30 isotope-item women" th:each="p: ${items1c}">
+					<!-- Block2 -->					
+					<div class="block2">					
+						<div class="block2-pic hov-img0">
+							<img alt="IMG-PRODUCT" th:src="@{|/images/${p.image}|}">																	
+							<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								[[#{cart.gh}]]
+							</a>
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">							
+								<div class="card-name">
+									<h5>
+										<a class="js-name-b2"
+											 th:href="@{|/home/product/detail/${p.id}|}"
+												th:attr="ng-click=@{|viewed.add(${p.id})|}"
+													 th:utext="${p.name}">
+										</a>
+									</h5>
+								</div>
+									<div style="color: #0066CC; font-weight: bolder; margin: 5px; font-size: 17px;">
+									<span th:utext="${#numbers.formatDecimal(p.price*(100-p.sale)/100, 0, 'POINT', 0, 'POINT')}"></span> ₫
+								</div>									
+							</div>
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a th:attr="ng-click=@{|favorite.add(${p.id})|}"
+									class="btn-addwish-b2 dis-blockpos-relative"> <img
+									class="dis-block trans-04"
+									src="/user/images/icons/icon-heart-01.png" alt="ICON">
+								</a>
+							</div>
+						</div>					
+					</div>
+				</div>			
+			</div>
+						</div>
+					</div>
+
+					<!-- Load more -->
+					<div class="flex-c-m flex-w w-full p-t-45">
+						<a th:href="@{|/home/product/list?cid=1|}"
+							class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+							[[#{load-more.View-All-Iphones}]]</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- iPhone End  -->
+
+	<!-- MacBook Start -->
+	<section class="sec-product bg0 p-t-30 p-b-30">
+
+		<div class="container">
+			<div class="p-b-22">
+				<h3 class="ltext-102 cl5 txt-center respon1">MacBook</h3>
+			</div>
+
+			<!--Tab01-->
+			<div class="tab01">
+				<!--Nav tabs-->
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="nav-item p-b-10"><a class="nav-link active"
+						data-toggle="tab" href="#best-seller1" role="tab">[[#{tab01.newproducts}]]</a></li>
+
+					<li class="nav-item p-b-10"><a class="nav-link"
+						data-toggle="tab" href="#featured1" role="tab">[[#{tab01.Price-Decreases}]]</a></li>
+
+					<li class="nav-item p-b-10"><a class="nav-link"
+						data-toggle="tab" href="#sale1" role="tab">[[#{tab01.Price-Increases-Gradually}]]</a></li>
+				</ul>
+
+				<!--Tab panes-->
+				<div class="tab-content p-t-20">
+
+					<!-- iPhone-New -->
+					<div class="tab-pane fade show active" id="best-seller1"
+						role="tabpanel">
+						<div class="container-fluid">
+							<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3 p-b-30 isotope-item women" th:each="p: ${items2a}">
+					<!-- Block2 -->					
+					<div class="block2">					
+						<div class="block2-pic hov-img0">
+							<img alt="IMG-PRODUCT" th:src="@{|/images/${p.image}|}">																	
+							<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								[[#{cart.gh}]]
+							</a>
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">							
+								<div class="card-name">
+									<h5>
+										<a class="js-name-b2"
+											 th:href="@{|/home/product/detail/${p.id}|}"
+												th:attr="ng-click=@{|viewed.add(${p.id})|}"
+													 th:utext="${p.name}">
+										</a>
+									</h5>
+								</div>
+									<div style="color: #0066CC; font-weight: bolder; margin: 5px; font-size: 17px;">
+									<span th:utext="${#numbers.formatDecimal(p.price*(100-p.sale)/100, 0, 'POINT', 0, 'POINT')}"></span> ₫
+								</div>								
+							</div>
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a th:attr="ng-click=@{|favorite.add(${p.id})|}"
+									class="btn-addwish-b2 dis-blockpos-relative"> <img
+									class="dis-block trans-04"
+									src="/user/images/icons/icon-heart-01.png" alt="ICON">
+								</a>
+							</div>
+						</div>					
+					</div>
+				</div>			
+			</div>
+						</div>
+					</div>
+
+					<!-- iPhone-Desc -->
+					<div class="tab-pane fade" id="featured1" role="tabpanel">
+						<!-- Slide2 -->
+						<div class="container-fluid">
+							<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3 p-b-30 isotope-item women" th:each="p: ${items2b}">
+					<!-- Block2 -->					
+					<div class="block2">					
+						<div class="block2-pic hov-img0">
+							<img alt="IMG-PRODUCT" th:src="@{|/images/${p.image}|}">																	
+							<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								[[#{cart.gh}]]
+							</a>
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">							
+								<div class="card-name">
+									<h5>
+										<a class="js-name-b2"
+											 th:href="@{|/home/product/detail/${p.id}|}"
+												th:attr="ng-click=@{|viewed.add(${p.id})|}"
+													 th:utext="${p.name}">
+										</a>
+									</h5>
+								</div>
+									<div style="color: #0066CC; font-weight: bolder; margin: 5px; font-size: 17px;">
+									<span th:utext="${#numbers.formatDecimal(p.price*(100-p.sale)/100, 0, 'POINT', 0, 'POINT')}"></span> ₫
+								</div>								
+							</div>
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a th:attr="ng-click=@{|favorite.add(${p.id})|}"
+									class="btn-addwish-b2 dis-blockpos-relative"> <img
+									class="dis-block trans-04"
+									src="/user/images/icons/icon-heart-01.png" alt="ICON">
+								</a>
+							</div>
+						</div>					
+					</div>
+				</div>			
+			</div>
+						</div>
+					</div>
+
+
+
+					<!-- iPhone-Sales -->
+					<div class="tab-pane fade" id="sale1" role="tabpanel">
+						<!--Slide3-->
+						<div class="container-fluid">
+							<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3 p-b-30 isotope-item women" th:each="p: ${items2c}">
+					<!-- Block2 -->					
+					<div class="block2">					
+						<div class="block2-pic hov-img0">
+							<img alt="IMG-PRODUCT" th:src="@{|/images/${p.image}|}">																	
+							<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								[[#{cart.gh}]]
+							</a>
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">							
+								<div class="card-name">
+									<h5>
+										<a class="js-name-b2"
+											 th:href="@{|/home/product/detail/${p.id}|}"
+												th:attr="ng-click=@{|viewed.add(${p.id})|}"
+													 th:utext="${p.name}">
+										</a>
+									</h5>
+								</div>
+								<div style="color: #0066CC; font-weight: bolder; margin: 5px; font-size: 17px;">
+									<span th:utext="${#numbers.formatDecimal(p.price*(100-p.sale)/100, 0, 'POINT', 0, 'POINT')}"></span> ₫
+								</div>									
+							</div>
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a th:attr="ng-click=@{|favorite.add(${p.id})|}"
+									class="btn-addwish-b2 dis-blockpos-relative"> <img
+									class="dis-block trans-04"
+									src="/user/images/icons/icon-heart-01.png" alt="ICON">
+								</a>
+							</div>
+						</div>					
+					</div>
+				</div>			
+			</div>
+						</div>
+					</div>
+
+					<!-- Load more -->
+					<div class="flex-c-m flex-w w-full p-t-45">
+						<a th:href="@{|/home/product/list?cid=2|}"
+							class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+							[[#{load-more.View-All-MacBook}]]</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- iPhone End  -->
+
+	<!-- iPad Start -->
+	<section class="sec-product bg0 p-t-30 p-b-30">
+
+		<div class="container">
+			<div class="p-b-22">
+				<h3 class="ltext-102 cl5 txt-center respon1">iPad</h3>
+			</div>
+
+			<!--Tab01-->
+			<div class="tab01">
+				<!--Nav tabs-->
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="nav-item p-b-10"><a class="nav-link active"
+						data-toggle="tab" href="#best-seller2" role="tab">[[#{tab01.newproducts}]]</a></li>
+
+					<li class="nav-item p-b-10"><a class="nav-link"
+						data-toggle="tab" href="#featured2" role="tab">[[#{tab01.Price-Decreases}]]</a></li>
+
+					<li class="nav-item p-b-10"><a class="nav-link"
+						data-toggle="tab" href="#sale2" role="tab">[[#{tab01.Price-Increases-Gradually}]]</a></li>
+				</ul>
+
+				<!--Tab panes-->
+				<div class="tab-content p-t-20">
+
+					<!-- iPhone-New -->
+					<div class="tab-pane fade show active" id="best-seller2"
+						role="tabpanel">
+						<div class="container-fluid">
+							<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3 p-b-30 isotope-item women" th:each="p: ${items3a}">
+					<!-- Block2 -->					
+					<div class="block2">					
+						<div class="block2-pic hov-img0">
+							<img alt="IMG-PRODUCT" th:src="@{|/images/${p.image}|}">																	
+							<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								[[#{cart.gh}]]
+							</a>
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">							
+								<div class="card-name">
+									<h5>
+										<a class="js-name-b2"
+											 th:href="@{|/home/product/detail/${p.id}|}"
+												th:attr="ng-click=@{|viewed.add(${p.id})|}"
+													 th:utext="${p.name}">
+										</a>
+									</h5>
+								</div>
+									<div style="color: #0066CC; font-weight: bolder; margin: 5px; font-size: 17px;">
+									<span th:utext="${#numbers.formatDecimal(p.price*(100-p.sale)/100, 0, 'POINT', 0, 'POINT')}"></span> ₫
+								</div>								
+							</div>
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a th:attr="ng-click=@{|favorite.add(${p.id})|}"
+									class="btn-addwish-b2 dis-blockpos-relative"> <img
+									class="dis-block trans-04"
+									src="/user/images/icons/icon-heart-01.png" alt="ICON">
+								</a>
+							</div>
+						</div>					
+					</div>
+				</div>			
+			</div>
+						</div>
+					</div>
+
+					<!-- iPhone-Desc -->
+					<div class="tab-pane fade" id="featured2" role="tabpanel">
+						<!-- Slide2 -->
+						<div class="container-fluid">
+							<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3 p-b-30 isotope-item women" th:each="p: ${items3b}">
+					<!-- Block2 -->					
+					<div class="block2">					
+						<div class="block2-pic hov-img0">
+							<img alt="IMG-PRODUCT" th:src="@{|/images/${p.image}|}">																	
+							<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								[[#{cart.gh}]]
+							</a>
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">							
+								<div class="card-name">
+									<h5>
+										<a class="js-name-b2"
+											 th:href="@{|/home/product/detail/${p.id}|}"
+												th:attr="ng-click=@{|viewed.add(${p.id})|}"
+													 th:utext="${p.name}">
+										</a>
+									</h5>
+								</div>
+								<div style="color: #0066CC; font-weight: bolder; margin: 5px; font-size: 17px;">
+									<span th:utext="${#numbers.formatDecimal(p.price*(100-p.sale)/100, 0, 'POINT', 0, 'POINT')}"></span> ₫
+								</div>								
+							</div>
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a th:attr="ng-click=@{|favorite.add(${p.id})|}"
+									class="btn-addwish-b2 dis-blockpos-relative"> <img
+									class="dis-block trans-04"
+									src="/user/images/icons/icon-heart-01.png" alt="ICON">
+								</a>
+							</div>
+						</div>					
+					</div>
+				</div>			
+			</div>
+						</div>
+					</div>
+
+
+
+					<!-- iPhone-Sales -->
+					<div class="tab-pane fade" id="sale2" role="tabpanel">
+						<!--Slide3-->
+						<div class="container-fluid">
+							<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3 p-b-30 isotope-item women" th:each="p: ${items3c}">
+					<!-- Block2 -->					
+					<div class="block2">					
+						<div class="block2-pic hov-img0">
+							<img alt="IMG-PRODUCT" th:src="@{|/images/${p.image}|}">																	
+							<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								[[#{cart.gh}]]
+							</a>
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">							
+								<div class="card-name">
+									<h5>
+										<a class="js-name-b2"
+											 th:href="@{|/home/product/detail/${p.id}|}"
+												th:attr="ng-click=@{|viewed.add(${p.id})|}"
+													 th:utext="${p.name}">
+										</a>
+									</h5>
+								</div>
+								<div style="color: #0066CC; font-weight: bolder; margin: 5px; font-size: 17px;">
+									<span th:utext="${#numbers.formatDecimal(p.price*(100-p.sale)/100, 0, 'POINT', 0, 'POINT')}"></span> ₫
+								</div>								
+							</div>
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a th:attr="ng-click=@{|favorite.add(${p.id})|}"
+									class="btn-addwish-b2 dis-blockpos-relative"> <img
+									class="dis-block trans-04"
+									src="/user/images/icons/icon-heart-01.png" alt="ICON">
+								</a>
+							</div>
+						</div>					
+					</div>
+				</div>			
+			</div>
+						</div>
+					</div>
+
+					<!-- Load more -->
+					<div class="flex-c-m flex-w w-full p-t-45">
+						<a th:href="@{|/home/product/list?cid=3|}"
+							class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+							[[#{load-more.View-All-IPad}]]</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- iPhone End  -->
+
+	<!-- Watch Start -->
+	<section class="sec-product bg0 p-t-30 p-b-30">
+
+		<div class="container">
+			<div class="p-b-22">
+				<h3 class="ltext-102 cl5 txt-center respon1">Apple Watch</h3>
+			</div>
+
+			<!--Tab01-->
+			<div class="tab01">
+				<!--Nav tabs-->
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="nav-item p-b-10"><a class="nav-link active"
+						data-toggle="tab" href="#best-seller3" role="tab">[[#{tab01.newproducts}]]</a></li>
+
+					<li class="nav-item p-b-10"><a class="nav-link"
+						data-toggle="tab" href="#featured3" role="tab">[[#{tab01.Price-Decreases}]]</a></li>
+
+					<li class="nav-item p-b-10"><a class="nav-link"
+						data-toggle="tab" href="#sale3" role="tab">[[#{tab01.Price-Increases-Gradually}]]</a></li>
+				</ul>
+
+				<!--Tab panes-->
+				<div class="tab-content p-t-20">
+
+					<!-- iPhone-New -->
+					<div class="tab-pane fade show active" id="best-seller3"
+						role="tabpanel">
+						<div class="container-fluid">
+							<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3 p-b-30 isotope-item women" th:each="p: ${items4a}">
+					<!-- Block2 -->					
+					<div class="block2">					
+						<div class="block2-pic hov-img0">
+							<img alt="IMG-PRODUCT" th:src="@{|/images/${p.image}|}">																	
+							<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								[[#{cart.gh}]]
+							</a>
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">							
+								<div class="card-name">
+									<h5>
+										<a class="js-name-b2"
+											 th:href="@{|/home/product/detail/${p.id}|}"
+												th:attr="ng-click=@{|viewed.add(${p.id})|}"
+													 th:utext="${p.name}">
+										</a>
+									</h5>
+								</div>
+									<div style="color: #0066CC; font-weight: bolder; margin: 5px; font-size: 17px;">
+									<span th:utext="${#numbers.formatDecimal(p.price*(100-p.sale)/100, 0, 'POINT', 0, 'POINT')}"></span> ₫
+								</div>									
+							</div>
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a th:attr="ng-click=@{|favorite.add(${p.id})|}"
+									class="btn-addwish-b2 dis-blockpos-relative"> <img
+									class="dis-block trans-04"
+									src="/user/images/icons/icon-heart-01.png" alt="ICON">
+								</a>
+							</div>
+						</div>					
+					</div>
+				</div>			
+			</div>
+						</div>
+					</div>
+
+					<!-- iPhone-Desc -->
+					<div class="tab-pane fade" id="featured3" role="tabpanel">
+						<!-- Slide2 -->
+						<div class="container-fluid">
+							<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3 p-b-30 isotope-item women" th:each="p: ${items4b}">
+					<!-- Block2 -->					
+					<div class="block2">					
+						<div class="block2-pic hov-img0">
+							<img alt="IMG-PRODUCT" th:src="@{|/images/${p.image}|}">																	
+							<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								Thêm Giỏ Hàng
+							</a>
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">							
+								<div class="card-name">
+									<h5>
+										<a class="js-name-b2"
+											 th:href="@{|/home/product/detail/${p.id}|}"
+												th:attr="ng-click=@{|viewed.add(${p.id})|}"
+													 th:utext="${p.name}">
+										</a>
+									</h5>
+								</div>
+								<div style="color: #0066CC; font-weight: bolder; margin: 5px; font-size: 17px;">
+									<span th:utext="${#numbers.formatDecimal(p.price*(100-p.sale)/100, 0, 'POINT', 0, 'POINT')}"></span> ₫
+								</div>								
+							</div>
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a th:attr="ng-click=@{|favorite.add(${p.id})|}"
+									class="btn-addwish-b2 dis-blockpos-relative"> <img
+									class="dis-block trans-04"
+									src="/user/images/icons/icon-heart-01.png" alt="ICON">
+								</a>
+							</div>
+						</div>					
+					</div>
+				</div>			
+			</div>
+						</div>
+					</div>
+
+
+
+					<!-- iPhone-Sales -->
+					<div class="tab-pane fade" id="sale3" role="tabpanel">
+						<!--Slide3-->
+						<div class="container-fluid">
+							<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3 p-b-30 isotope-item women" th:each="p: ${items4c}">
+					<!-- Block2 -->					
+					<div class="block2">					
+						<div class="block2-pic hov-img0">
+							<img alt="IMG-PRODUCT" th:src="@{|/images/${p.image}|}">																	
+							<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								[[#{cart.gh}]]
+							</a>
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">							
+								<div class="card-name">
+									<h5>
+										<a class="js-name-b2"
+											 th:href="@{|/home/product/detail/${p.id}|}"
+												th:attr="ng-click=@{|viewed.add(${p.id})|}"
+													 th:utext="${p.name}">
+										</a>
+									</h5>
+								</div>
+								<div style="color: #0066CC; font-weight: bolder; margin: 5px; font-size: 17px;">
+									<span th:utext="${#numbers.formatDecimal(p.price*(100-p.sale)/100, 0, 'POINT', 0, 'POINT')}"></span> ₫
+								</div>								
+							</div>
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a th:attr="ng-click=@{|favorite.add(${p.id})|}"
+									class="btn-addwish-b2 dis-blockpos-relative"> <img
+									class="dis-block trans-04"
+									src="/user/images/icons/icon-heart-01.png" alt="ICON">
+								</a>
+							</div>
+						</div>					
+					</div>
+				</div>			
+			</div>
+						</div>
+					</div>
+
+					<!-- Load more -->
+					<div class="flex-c-m flex-w w-full p-t-45">
+						<a th:href="@{|/home/product/list?cid=4|}"
+							class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+							[[#{load-more.View-All-AppleWatch}]]</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- iPhone End  -->
+
+	<!-- Âm Thanh Start -->
+	<section class="sec-product bg0 p-t-30 p-b-30">
+
+		<div class="container">
+			<div class="p-b-22">
+				<h3 class="ltext-102 cl5 txt-center respon1">[[#{product.Sound}]]</h3>
+			</div>
+
+			<!--Tab01-->
+			<div class="tab01">
+				<!--Nav tabs-->
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="nav-item p-b-10"><a class="nav-link active"
+						data-toggle="tab" href="#best-seller4" role="tab">[[#{tab01.newproducts}]]</a></li>
+
+					<li class="nav-item p-b-10"><a class="nav-link"
+						data-toggle="tab" href="#featured4" role="tab">[[#{tab01.Price-Decreases}]]</a></li>
+
+					<li class="nav-item p-b-10"><a class="nav-link"
+						data-toggle="tab" href="#sale4" role="tab">[[#{tab01.Price-Increases-Gradually}]]</a></li>
+				</ul>
+
+				<!--Tab panes-->
+				<div class="tab-content p-t-20">
+
+					<!-- iPhone-New -->
+					<div class="tab-pane fade show active" id="best-seller4"
+						role="tabpanel">
+						<div class="container-fluid">
+							<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3 p-b-30 isotope-item women" th:each="p: ${items5a}">
+					<!-- Block2 -->					
+					<div class="block2">					
+						<div class="block2-pic hov-img0">
+							<img alt="IMG-PRODUCT" th:src="@{|/images/${p.image}|}">																	
+							<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								[[#{cart.gh}]]
+							</a>
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">							
+								<div class="card-name">
+									<h5>
+										<a class="js-name-b2"
+											 th:href="@{|/home/product/detail/${p.id}|}"
+												th:attr="ng-click=@{|viewed.add(${p.id})|}"
+													 th:utext="${p.name}">
+										</a>
+									</h5>
+								</div>
+									<div style="color: #0066CC; font-weight: bolder; margin: 5px; font-size: 17px;">
+									<span th:utext="${#numbers.formatDecimal(p.price*(100-p.sale)/100, 0, 'POINT', 0, 'POINT')}"></span> ₫
+								</div>									
+							</div>
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a th:attr="ng-click=@{|favorite.add(${p.id})|}"
+									class="btn-addwish-b2 dis-blockpos-relative"> <img
+									class="dis-block trans-04"
+									src="/user/images/icons/icon-heart-01.png" alt="ICON">
+								</a>
+							</div>
+						</div>					
+					</div>
+				</div>			
+			</div>
+						</div>
+					</div>
+
+					<!-- iPhone-Desc -->
+					<div class="tab-pane fade" id="featured4" role="tabpanel">
+						<!-- Slide2 -->
+						<div class="container-fluid">
+							<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3 p-b-30 isotope-item women" th:each="p: ${items5b}">
+					<!-- Block2 -->					
+					<div class="block2">					
+						<div class="block2-pic hov-img0">
+							<img alt="IMG-PRODUCT" th:src="@{|/images/${p.image}|}">																	
+							<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								[[#{cart.gh}]]
+							</a>
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">							
+								<div class="card-name">
+									<h5>
+										<a class="js-name-b2"
+											 th:href="@{|/home/product/detail/${p.id}|}"
+												th:attr="ng-click=@{|viewed.add(${p.id})|}"
+													 th:utext="${p.name}">
+										</a>
+									</h5>
+								</div>
+								<div style="color: #0066CC; font-weight: bolder; margin: 5px; font-size: 17px;">
+									<span th:utext="${#numbers.formatDecimal(p.price*(100-p.sale)/100, 0, 'POINT', 0, 'POINT')}"></span> ₫
+								</div>								
+							</div>
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a th:attr="ng-click=@{|favorite.add(${p.id})|}"
+									class="btn-addwish-b2 dis-blockpos-relative"> <img
+									class="dis-block trans-04"
+									src="/user/images/icons/icon-heart-01.png" alt="ICON">
+								</a>
+							</div>
+						</div>					
+					</div>
+				</div>			
+			</div>
+						</div>
+					</div>
+
+
+
+					<!-- iPhone-Sales -->
+					<div class="tab-pane fade" id="sale4" role="tabpanel">
+						<!--Slide3-->
+						<div class="container-fluid">
+							<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3 p-b-30 isotope-item women" th:each="p: ${items5c}">
+					<!-- Block2 -->					
+					<div class="block2">					
+						<div class="block2-pic hov-img0">
+							<img alt="IMG-PRODUCT" th:src="@{|/images/${p.image}|}">																	
+							<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								[[#{cart.gh}]]
+							</a>
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">							
+								<div class="card-name">
+									<h5>
+										<a class="js-name-b2"
+											 th:href="@{|/home/product/detail/${p.id}|}"
+												th:attr="ng-click=@{|viewed.add(${p.id})|}"
+													 th:utext="${p.name}">
+										</a>
+									</h5>
+								</div>
+								<div style="color: #0066CC; font-weight: bolder; margin: 5px; font-size: 17px;">
+									<span th:utext="${#numbers.formatDecimal(p.price*(100-p.sale)/100, 0, 'POINT', 0, 'POINT')}"></span> ₫
+								</div>									
+							</div>
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a th:attr="ng-click=@{|favorite.add(${p.id})|}"
+									class="btn-addwish-b2 dis-blockpos-relative"> <img
+									class="dis-block trans-04"
+									src="/user/images/icons/icon-heart-01.png" alt="ICON">
+								</a>
+							</div>
+						</div>					
+					</div>
+				</div>			
+			</div>
+						</div>
+					</div>
+
+					<!-- Load more -->
+					<div class="flex-c-m flex-w w-full p-t-45">
+						<a th:href="@{|/home/product/list?cid=5|}"
+							class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+							[[#{load-more.View-All-Sound}]]</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- iPhone End  -->
+
+	<!-- Phụ Kiện Start -->
+	<section class="sec-product bg0 p-t-30 p-b-30">
+
+		<div class="container">
+			<div class="p-b-22">
+				<h3 class="ltext-102 cl5 txt-center respon1">[[#{product.Accessory}]]</h3>
+			</div>
+
+			<!--Tab01-->
+			<div class="tab01">
+				<!--Nav tabs-->
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="nav-item p-b-10"><a class="nav-link active"
+						data-toggle="tab" href="#best-seller5" role="tab">[[#{tab01.newproducts}]]</a></li>
+
+					<li class="nav-item p-b-10"><a class="nav-link"
+						data-toggle="tab" href="#featured5" role="tab">[[#{tab01.Price-Decreases}]]</a></li>
+
+					<li class="nav-item p-b-10"><a class="nav-link"
+						data-toggle="tab" href="#sale5" role="tab">[[#{tab01.Price-Increases-Gradually}]]</a></li>
+				</ul>
+
+				<!--Tab panes-->
+				<div class="tab-content p-t-20">
+
+					<!-- iPhone-New -->
+					<div class="tab-pane fade show active" id="best-seller5"
+						role="tabpanel">
+						<div class="container-fluid">
+							<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3 p-b-30 isotope-item women" th:each="p: ${items6a}">
+					<!-- Block2 -->					
+					<div class="block2">					
+						<div class="block2-pic hov-img0">
+							<img alt="IMG-PRODUCT" th:src="@{|/images/${p.image}|}">																	
+							<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								[[#{cart.gh}]]
+							</a>
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">							
+								<div class="card-name">
+									<h5>
+										<a class="js-name-b2"
+											 th:href="@{|/home/product/detail/${p.id}|}"
+												th:attr="ng-click=@{|viewed.add(${p.id})|}"
+													 th:utext="${p.name}">
+										</a>
+									</h5>
+								</div>
+								<div style="color: #0066CC; font-weight: bolder; margin: 5px; font-size: 17px;">
+									<span th:utext="${#numbers.formatDecimal(p.price*(100-p.sale)/100, 0, 'POINT', 0, 'POINT')}"></span> ₫
+								</div>									
+							</div>
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a th:attr="ng-click=@{|favorite.add(${p.id})|}"
+									class="btn-addwish-b2 dis-blockpos-relative"> <img
+									class="dis-block trans-04"
+									src="/user/images/icons/icon-heart-01.png" alt="ICON">
+								</a>
+							</div>
+						</div>					
+					</div>
+				</div>			
+			</div>
+						</div>
+					</div>
+
+					<!-- iPhone-Desc -->
+					<div class="tab-pane fade" id="featured5" role="tabpanel">
+						<!-- Slide2 -->
+						<div class="container-fluid">
+							<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3 p-b-30 isotope-item women" th:each="p: ${items6b}" >
+					<!-- Block2 -->					
+					<div class="block2">					
+						<div class="block2-pic hov-img0">
+							<img alt="IMG-PRODUCT" th:src="@{|/images/${p.image}|}">																	
+							<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								[[#{cart.gh}]]
+							</a>
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">							
+								<div class="card-name">
+									<h5>
+										<a class="js-name-b2"
+											 th:href="@{|/home/product/detail/${p.id}|}"
+												th:attr="ng-click=@{|viewed.add(${p.id})|}"
+													 th:utext="${p.name}">
+										</a>
+									</h5>
+								</div>
+								<div style="color: #0066CC; font-weight: bolder; margin: 5px; font-size: 17px;">
+									<span th:utext="${#numbers.formatDecimal(p.price*(100-p.sale)/100, 0, 'POINT', 0, 'POINT')}"></span> ₫
+								</div>									
+							</div>
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a th:attr="ng-click=@{|favorite.add(${p.id})|}"
+									class="btn-addwish-b2 dis-blockpos-relative"> <img
+									class="dis-block trans-04"
+									src="/user/images/icons/icon-heart-01.png" alt="ICON">
+								</a>
+							</div>
+						</div>					
+					</div>
+				</div>			
+			</div>
+						</div>
+					</div>
+
+
+
+					<!-- iPhone-Sales -->
+					<div class="tab-pane fade" id="sale5" role="tabpanel">
+						<!--Slide3-->
+						<div class="container-fluid">
+							<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3 p-b-30 isotope-item women" th:each="p: ${items6c}">
+					<!-- Block2 -->					
+					<div class="block2">					
+						<div class="block2-pic hov-img0">
+							<img alt="IMG-PRODUCT" th:src="@{|/images/${p.image}|}">																	
+							<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								[[#{cart.gh}]]
+							</a>
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">							
+								<div class="card-name">
+									<h5>
+										<a class="js-name-b2"
+											 th:href="@{|/home/product/detail/${p.id}|}"
+												th:attr="ng-click=@{|viewed.add(${p.id})|}"
+													 th:utext="${p.name}">
+										</a>
+									</h5>
+								</div>
+								<div style="color: #0066CC; font-weight: bolder; margin: 5px; font-size: 17px;">
+									<span th:utext="${#numbers.formatDecimal(p.price*(100-p.sale)/100, 0, 'POINT', 0, 'POINT')}"></span> ₫
+								</div>									
+							</div>
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a th:attr="ng-click=@{|favorite.add(${p.id})|}"
+									class="btn-addwish-b2 dis-blockpos-relative"> <img
+									class="dis-block trans-04"
+									src="/user/images/icons/icon-heart-01.png" alt="ICON">
+								</a>
+							</div>
+						</div>					
+					</div>
+				</div>			
+			</div>
+						</div>
+					</div>
+
+					<!-- Load more -->
+					<div class="flex-c-m flex-w w-full p-t-45">
+						<a th:href="@{|/home/product/list?cid=6|}"
+							class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+							[[#{load-more.View-All-Accessory}]]</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- iPhone End  -->
+
+	<!-- Home End  -->
+
+
+
+
+	<!-- Blog -->
+	<section class="sec-blog bg0 p-t-60 p-b-90">
+		<div class="container">
+			<div class="p-b-66">
+				<h3 class="ltext-105 cl5 txt-center respon1">[[#{blog.header-TCN}]]</h3>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6 col-md-4 p-b-40" th:each="b : ${blogs}">
+					<div class="blog-item">
+						<div class="hov-img0">
+							<a th:href="@{|/home/blog-detail/${b.id}|}"> <img
+								style="height: 240px;" th:src="@{|/images/${b.image}|}"
+								alt="IMG-BLOG">
+							</a>
+						</div>
+
+						<div class="p-t-15">
+							<div class="stext-107 flex-w p-b-14">
+								<span class="m-r-3"> <span class="cl4"> By </span> <span
+									class="cl5"> [[${b.accounts.username}]] </span>
+								</span> <span> <span class="cl4"> on </span> <span class="cl5">
+										[[${b.create_date}]] </span>
+								</span>
+							</div>
+
+							<h4 class="p-b-12">
+								<a th:href="@{|/home/blog-detail/${b.id}|}"
+									class="mtext-101 cl2 hov-cl1 trans-04"> [[${b.title}]] </a>
+							</h4>
+
+							<p class="stext-108 cl6">[[${b.short_describe}]]</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</section>
+	<!-- End -->
+
+</body>
+</html>
